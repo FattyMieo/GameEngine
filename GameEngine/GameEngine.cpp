@@ -150,10 +150,12 @@ void TestPtr()
 	system("PAUSE");
 }
 
+/*
 int main()
 {
 	//TestPtr();
 	TestConstructor();
     return 0;
 }
+*/
 
