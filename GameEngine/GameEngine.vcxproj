@@ -112,7 +112,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Array_Vector_List.cpp" />
+    <ClCompile Include="CircularBuffer.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="TestCircularBuffer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CircularBuffer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

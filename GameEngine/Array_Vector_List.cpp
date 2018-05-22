@@ -104,6 +104,7 @@ void RunList()
 	}
 }
 
+/*
 int main(void)
 {
 	//RunVector();
@@ -112,3 +113,4 @@ int main(void)
 	system("PAUSE");
 	return 0;
 }
+*/
