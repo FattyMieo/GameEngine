@@ -15,7 +15,8 @@ public:
 	char GetValue(int index);
 	char GetFront();
 	char GetBack();
-	void Push(char value);
+	void PushFront(char value);
+	void PushBack(char value);
 	char PopFront();
 	char PopBack();
 

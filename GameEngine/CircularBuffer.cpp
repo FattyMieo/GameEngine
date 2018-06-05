@@ -32,7 +32,7 @@ char CircularBuffer::GetBack()
 	return array[back];
 }
 
-void CircularBuffer::Push(char value)
+void CircularBuffer::PushFront(char value)
 {
 	array[front] = value;
 	front = (front + 1) % BUFFER_SIZE;
@@ -41,11 +41,28 @@ void CircularBuffer::Push(char value)
 	//Check if Overflow happens
 	int overflow = size - BUFFER_SIZE;
 
-	if (overflow > 0) 
+	if (overflow > 0)
 	{
 		//std::cout << "Buffer overflow!" << std::endl;
 		size -= overflow;
 		back = (back + overflow) % BUFFER_SIZE;
+	}
+}
+
+void CircularBuffer::PushBack(char value)
+{
+	back = (back - 1) + (back < 1 ? BUFFER_SIZE : 0);
+	array[back] = value;
+	++size;
+
+	//Check if Overflow happens
+	int overflow = size - BUFFER_SIZE;
+
+	if (overflow > 0)
+	{
+		//std::cout << "Buffer overflow!" << std::endl;
+		size -= overflow;
+		front = (front - 1) + (front < 1 ? BUFFER_SIZE : 0);
 	}
 }
 

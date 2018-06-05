@@ -7,15 +7,24 @@ using namespace std;
 int main(void)
 {
 	CircularBuffer cb;
+	bool reverse = false;
 
 	while (true)
 	{
 		char input;
 
 		system("CLS");
+		if (reverse)
+		{
+			cout << "  ";
+		}
 		for (int i = 0; i < cb.GetSize(); i++)
 		{
 			cout << cb.GetValue(i) << " ";
+		}
+		if (reverse)
+		{
+			cout << "\r";
 		}
 
 		//cin >> input;
@@ -29,9 +38,20 @@ int main(void)
 		{
 			cb.PopBack();
 		}
+		else if (input == '\t')
+		{
+			reverse = !reverse;
+		}
 		else
 		{
-			cb.Push(input);
+			if (!reverse)
+			{
+				cb.PushFront(input);
+			}
+			else
+			{
+				cb.PushBack(input);
+			}
 		}
 	}
 
