@@ -33,9 +33,18 @@
     <ClCompile Include="BitData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BitData_Demo_Old.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BitData_Demo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CircularBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BitData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

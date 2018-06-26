@@ -1,3 +1,4 @@
+/*
 #define MAX 4294967295
 #define MIN 0
 #define TOTAL_BITS 32
@@ -71,7 +72,7 @@ void ListContent(BitData data)
 		}
 	}
 }
-/*
+
 int main(void)
 {
 	BitData bitData;
