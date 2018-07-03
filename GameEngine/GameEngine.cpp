@@ -1,14 +1,35 @@
 // GameEngine.cpp : Defines the entry point for the console application.
 //
 #include <GLFW/glfw3.h>
+#include <Windows.h>
+#include <GL/GLU.h>
 #include <iostream>
+#include "Application.h"
 
 using namespace std;
+
+const int RESOLUTION_X = 640;
+const int RESOLUTION_Y = 480;
+
+void onWindowResized(GLFWwindow* window, int width, int height)
+{
+	glViewport(0, 0, width, height);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+
+	// Use Ortho 2D View
+	gluOrtho2D(0, width, 0, height);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+}
 
 float timer = 0.0f;
 
 void gameUpdate(float deltaTime)
 {
+	Application::GetInstance()->Update(deltaTime);
+
 	timer -= deltaTime;
 
 	if (timer <= 0.0f)
@@ -46,6 +67,12 @@ int main(void)
 	// Enable / Disbale VSync
 	glfwSwapInterval((useVSync ? 1 : 0));
 
+	// Set Ortho 2D View
+	onWindowResized(window, RESOLUTION_X, RESOLUTION_Y);
+
+	// Run Application Start
+	Application::GetInstance()->Start();
+
 	// Core Game Loop until the user closes the window
 	while (!glfwWindowShouldClose(window))
 	{
@@ -58,6 +85,7 @@ int main(void)
 		float fps = 1.0f / deltaTime;
 
 		gameUpdate(deltaTime);
+		Application::GetInstance()->Draw();
 
 		// Swap front and back buffers
 		glfwSwapBuffers(window);
