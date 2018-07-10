@@ -3,17 +3,19 @@
 #define APPLICATION_H
 
 #include "Sprite.h"
+#include <GLFW/glfw3.h>
 
-static class Application
+class Application
 {
 private:
-	static Application* m_instance;
 	Sprite m_dummySprite;
-public:
 	Application();
+public:
+	float time;
+
 	~Application();
 
-	static Application* GetInstance();
+	static Application& GetInstance();
 
 	void Start();
 	void Update(float deltaTime);

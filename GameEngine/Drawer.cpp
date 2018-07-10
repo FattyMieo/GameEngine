@@ -1,5 +1,25 @@
 #include "Drawer.h"
 
+void Drawer::LoadTexture(const char* path, GLuint textureID, unsigned int& width, unsigned int& height)
+{
+	CBitmap bitmap(path);
+
+	glBindTexture(GL_TEXTURE_2D, textureID);
+
+	// Repeat the texture after exceeding 1.0f
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // Apply texture wrapping along horizontal part
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT); // Apply texture wrapping along vertical part
+
+																  // Bilinear filtering
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); // Near filtering (For when texture needs to scale...)
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); // Far filtering (For when texture needs to scale...)
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, bitmap.GetWidth(), bitmap.GetHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, bitmap.GetBits());
+
+	width = bitmap.GetWidth();
+	height = bitmap.GetHeight();
+}
+
 void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height)
 {
 	glEnable(GL_TEXTURE_2D); //Enable texturing
