@@ -3,11 +3,13 @@
 #define SPRITE_H
 
 #include <string>
-#include <GLFW/glfw3.h>
-#include "Transform2D.h"
 #include <cmath>
+#include <GLFW/glfw3.h>
+#include "IDrawable.h"
+#include "Component.h"
+#include "Transform2D.h"
 
-class Sprite
+class Sprite : public Component, public IDrawable
 {
 private:
 	GLuint m_textureID[1];
@@ -25,7 +27,7 @@ public:
 	void LoadFromFile(const std::string& file);
 	void SetTextureID(GLuint textureID);
 	void SetDimension(unsigned int width, unsigned int height);
-	void Draw();
+	virtual void Draw();
 	void Draw(float x, float y, float rotation, float scaleX, float scaleY);
 	void Draw(Vector2 position, float rotation, Vector2 scale);
 	void Draw(Transform2D newTransform);

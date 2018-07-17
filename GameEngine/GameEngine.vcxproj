@@ -147,8 +147,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="Drawer.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Vector2.cpp" />
@@ -156,7 +158,13 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="BlendMode.h" />
+    <ClInclude Include="Component.h" />
     <ClInclude Include="Drawer.h" />
+    <ClInclude Include="ExtendList.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="IDrawable.h" />
+    <ClInclude Include="IRunnable.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Transform2D.h" />

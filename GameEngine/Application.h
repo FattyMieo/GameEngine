@@ -2,13 +2,16 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include "Sprite.h"
 #include <GLFW/glfw3.h>
+#include "IRunnable.h"
+#include "IDrawable.h"
+#include "ExtendList.h"
+#include "Sprite.h"
 
-class Application
+class Application : public IRunnable, public IDrawable
 {
 private:
-	Sprite m_dummySprite;
+	std::list<Sprite> m_Sprites;
 	Application();
 public:
 	float time;

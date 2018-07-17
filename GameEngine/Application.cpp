@@ -21,7 +21,18 @@ Application& Application::GetInstance()
 void Application::Start()
 {
 	//std::cout << "Application Started" << std::endl;
-	m_dummySprite.LoadFromFile("../Media/Cat.bmp");
+	Sprite s;
+	s.LoadFromFile("../Media/Cat.bmp");
+
+	m_Sprites.push_back(s);
+
+	s.LoadFromFile("../Media/Dog.bmp");
+
+	m_Sprites.push_back(s);
+
+	s.LoadFromFile("../Media/Cat.bmp");
+
+	m_Sprites.push_back(s);
 }
 
 void Application::Update(float deltaTime)
@@ -36,7 +47,7 @@ void Application::Draw()
 	//std::cout << "Application Drawn" << std::endl;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	m_dummySprite.Draw
+	ExtendList::Get(m_Sprites, 0).Draw
 	(
 		320.0f,
 		240.0f,
@@ -44,7 +55,8 @@ void Application::Draw()
 		0.25f * (sin(time + 1.0f) + 1.0f),
 		0.25f * (sin(time + 1.0f) + 1.0f)
 	);
-	m_dummySprite.Draw
+	
+	ExtendList::Get(m_Sprites, 1).Draw
 	(
 		100.0f,
 		240.0f,
@@ -52,7 +64,8 @@ void Application::Draw()
 		0.5f * (sin(time + 2.0f) + 0.25f),
 		0.5f * (sin(time + 2.0f) + 0.25f)
 	);
-	m_dummySprite.Draw
+
+	ExtendList::Get(m_Sprites, 2).Draw
 	(
 		220.0f,
 		400.0f,
