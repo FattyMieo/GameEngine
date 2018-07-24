@@ -20,11 +20,27 @@ void Drawer::LoadTexture(const char* path, GLuint textureID, unsigned int& width
 	height = bitmap.GetHeight();
 }
 
-void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height)
+void Drawer::DrawGeometry(GLuint textureID, GLfloat* vertices, GLfloat* texCoords, GLubyte* colors)
 {
 	glEnable(GL_TEXTURE_2D); //Enable texturing
 	glBindTexture(GL_TEXTURE_2D, textureID);
 
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+
+	glVertexPointer(3, GL_FLOAT, 0, vertices);
+	glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
+	glColorPointer(3, GL_UNSIGNED_BYTE, 0, colors);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
+}
+
+void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height, GLubyte r, GLubyte g, GLubyte b)
+{
 	float halfWidth = (float)width / 2.0f;
 	float halfHeight = (float)height / 2.0f;
 
@@ -52,25 +68,19 @@ void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height)
 
 	GLubyte colors[] =
 	{
-		255, 255, 255,
-		255, 255, 255,
-		255, 255, 255,
+		r, g, b,
+		r, g, b,
+		r, g, b,
 
-		255, 255, 255,
-		255, 255, 255,
-		255, 255, 255
+		r, g, b,
+		r, g, b,
+		r, g, b
 	};
 
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-	glEnableClientState(GL_COLOR_ARRAY);
+	DrawGeometry(textureID, vertices, texCoords, colors);
+}
 
-	glVertexPointer(3, GL_FLOAT, 0, vertices);
-	glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
-	glColorPointer(3, GL_UNSIGNED_BYTE, 0, colors);
-	glDrawArrays(GL_TRIANGLES, 0, 6);
-
-	glDisableClientState(GL_VERTEX_ARRAY);
-	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	glDisableClientState(GL_COLOR_ARRAY);
+void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height)
+{
+	DrawSquare(textureID, x, y, width, height, 255, 255, 255);
 }

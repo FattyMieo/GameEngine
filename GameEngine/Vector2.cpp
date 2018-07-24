@@ -16,3 +16,9 @@ Vector2::~Vector2()
 {
 
 }
+
+void Vector2::SetEqual(float f)
+{
+	this->x = f;
+	this->y = f;
+}

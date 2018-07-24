@@ -16,7 +16,6 @@ private:
 	Transform2D m_transform;
 	Sprite m_sprite;
 	BlendMode m_blendMode;
-	//Color m_color; //Vector4
 
 public:
 	
@@ -24,19 +23,16 @@ public:
 	GameObject(Sprite& sprite);
 	~GameObject();
 
-	void SetTransform(Transform2D m_transform);
+	void SetTransform(Transform2D transform);
 	Transform2D GetTransform();
 
 	void SetSprite(Sprite& sprite);
 	Sprite& GetSprite();
 
-	//void SetColor(const Color& color);
-	//const Color& GetColor();
-
 	void SetBlendingMode(BlendMode blend);
 	BlendMode GetBlendingMode();
 
-	virtual void Draw();
 	virtual void Start();
 	virtual void Update(float deltaTime);
+	virtual void Draw();
 };

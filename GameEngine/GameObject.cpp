@@ -20,9 +20,14 @@ GameObject::~GameObject()
 
 }
 
-Sprite& GameObject::GetSprite()
+void GameObject::SetTransform(Transform2D transform)
 {
-	return m_sprite;
+	m_transform = transform;
+}
+
+Transform2D GameObject::GetTransform()
+{
+	return m_transform;
 }
 
 void GameObject::SetSprite(Sprite& sprite)
@@ -30,9 +35,19 @@ void GameObject::SetSprite(Sprite& sprite)
 	m_sprite = sprite;
 }
 
-void GameObject::Draw()
+Sprite& GameObject::GetSprite()
 {
-	GetSprite().Draw();
+	return m_sprite;
+}
+
+void GameObject::SetBlendingMode(BlendMode mode)
+{
+	m_blendMode = mode;
+}
+
+BlendMode GameObject::GetBlendingMode()
+{
+	return m_blendMode;
 }
 
 void GameObject::Start()
@@ -43,4 +58,9 @@ void GameObject::Start()
 void GameObject::Update(float deltaTime)
 {
 
+}
+
+void GameObject::Draw()
+{
+	GetSprite().Draw(GetTransform());
 }

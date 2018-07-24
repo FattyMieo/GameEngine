@@ -12,34 +12,14 @@ Application::~Application()
 
 }
 
-Application& Application::GetInstance()
-{
-	static Application instance;
-	return instance;
-}
-
 void Application::Start()
 {
-	//std::cout << "Application Started" << std::endl;
-	Sprite s;
-	s.LoadFromFile("../Media/Cat.bmp");
-
-	m_Sprites.push_back(s);
-
-	s.LoadFromFile("../Media/Dog.bmp");
-
-	m_Sprites.push_back(s);
-
-	s.LoadFromFile("../Media/Cat.bmp");
-
-	m_Sprites.push_back(s);
+	std::cout << "Application Started" << std::endl;
 }
 
 void Application::Update(float deltaTime)
 {
-	//std::cout << "Application Updated" << std::endl;
-
-	time += deltaTime;
+	std::cout << "Application Updated" << std::endl;
 }
 
 void Application::Draw()
@@ -47,30 +27,51 @@ void Application::Draw()
 	//std::cout << "Application Drawn" << std::endl;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	ExtendList::Get(m_Sprites, 0).Draw
-	(
-		320.0f,
-		240.0f,
-		100.0f * time,
-		0.25f * (sin(time + 1.0f) + 1.0f),
-		0.25f * (sin(time + 1.0f) + 1.0f)
-	);
-	
-	ExtendList::Get(m_Sprites, 1).Draw
-	(
-		100.0f,
-		240.0f,
-		-15.0f * time,
-		0.5f * (sin(time + 2.0f) + 0.25f),
-		0.5f * (sin(time + 2.0f) + 0.25f)
-	);
+	std::list<GameObject*>::iterator it = m_GameObjectsCon.GetList().begin();
 
-	ExtendList::Get(m_Sprites, 2).Draw
-	(
-		220.0f,
-		400.0f,
-		20.0f * time,
-		0.3f * (sin(time + 3.0f) + 0.5f),
-		0.3f * (sin(time + 3.0f) + 0.5f)
-	);
+	while (it != m_GameObjectsCon.GetList().end())
+	{
+		GameObject go = **it;
+		go.Draw();
+		++it;
+	}
+}
+
+GameObject* Application::Instantiate()
+{
+	return Instantiate(new GameObject());
+}
+
+GameObject* Application::Instantiate(GameObject* copy)
+{
+	m_GameObjectsCon.GetList().push_back(copy);
+	return copy;
+}
+
+GameObject* Application::Instantiate(Transform2D transform)
+{
+	GameObject* go = new GameObject();
+	go->SetTransform(transform);
+
+	return Instantiate(go);
+}
+
+GameObject* Application::Instantiate(Vector2 position, float rotation)
+{
+	return Instantiate(position, rotation, Vector2(1.0f, 1.0f));
+}
+
+GameObject* Application::Instantiate(Vector2 position, float rotation, Vector2 scale)
+{
+	Transform2D transform;
+	transform.position = position;
+	transform.rotation = rotation;
+	transform.scale = scale;
+
+	return Instantiate(transform);
+}
+
+GameObject& Application::FindGameObject(int index)
+{
+	return m_GameObjectsCon.GetItem(index);
 }

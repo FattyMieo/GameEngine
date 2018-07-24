@@ -4,7 +4,7 @@
 #include <Windows.h>
 #include <GL/GLU.h>
 #include <iostream>
-#include "Application.h"
+#include "MyApplication.h"
 #include "Bitmap.h"
 
 using namespace std;
@@ -25,11 +25,13 @@ void onWindowResized(GLFWwindow* window, int width, int height)
 	glLoadIdentity();
 }
 
+Application* app = new MyApplication();
+
 float timer = 0.0f;
 
 void gameUpdate(float deltaTime)
 {
-	Application::GetInstance().Update(deltaTime);
+	app->Update(deltaTime);
 
 	timer -= deltaTime;
 
@@ -72,7 +74,7 @@ int main(void)
 	onWindowResized(window, RESOLUTION_X, RESOLUTION_Y);
 
 	// Run Application Start
-	Application::GetInstance().Start();
+	app->Start();
 
 	// Core Game Loop until the user closes the window
 	while (!glfwWindowShouldClose(window))
@@ -86,7 +88,7 @@ int main(void)
 		float fps = 1.0f / deltaTime;
 
 		gameUpdate(deltaTime);
-		Application::GetInstance().Draw();
+		app->Draw();
 
 		// Swap front and back buffers
 		glfwSwapBuffers(window);

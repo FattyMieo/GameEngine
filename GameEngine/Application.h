@@ -6,23 +6,30 @@
 #include "IRunnable.h"
 #include "IDrawable.h"
 #include "ExtendList.h"
-#include "Sprite.h"
+#include "Container.h"
+#include "GameObject.h"
 
 class Application : public IRunnable, public IDrawable
 {
-private:
-	std::list<Sprite> m_Sprites;
-	Application();
+protected:
+	std::list<GameObject*> m_GameObjects;
+	Container<GameObject> m_GameObjectsCon;
+
 public:
-	float time;
+	Application();
+	virtual ~Application();
 
-	~Application();
-
-	static Application& GetInstance();
-
-	void Start();
-	void Update(float deltaTime);
+	virtual void Start();
+	virtual void Update(float deltaTime);
 	void Draw();
+
+	GameObject* Instantiate();
+	GameObject* Instantiate(GameObject* copy);
+	GameObject* Instantiate(Transform2D transform);
+	GameObject* Instantiate(Vector2 position, float rotation);
+	GameObject* Instantiate(Vector2 position, float rotation, Vector2 scale);
+
+	GameObject& FindGameObject(int index);
 };
 
 #endif
