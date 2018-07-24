@@ -9,6 +9,7 @@
 #include "Component.h"
 #include "Transform2D.h"
 #include "Color.h"
+#include "BlendMode.h"
 
 class Sprite : public Component, public IDrawable
 {
@@ -18,6 +19,7 @@ private:
 	unsigned int m_height;
 	Transform2D m_transform;
 	Color m_color;
+	BlendMode m_blendMode;
 
 public:
 
@@ -29,6 +31,8 @@ public:
 	void SetTextureID(const GLuint textureID);
 	void SetColor(const Color& color);
 	const Color& GetColor();
+	void SetBlendingMode(BlendMode blend);
+	BlendMode GetBlendingMode();
 
 	virtual void Draw();
 	void Draw(float x, float y, float rotation, float scaleX, float scaleY);

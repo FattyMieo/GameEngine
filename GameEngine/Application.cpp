@@ -27,9 +27,9 @@ void Application::Draw()
 	//std::cout << "Application Drawn" << std::endl;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	std::list<GameObject*>::iterator it = m_GameObjectsCon.GetList().begin();
+	std::list<GameObject*>::iterator it = m_GameObjects.GetList().begin();
 
-	while (it != m_GameObjectsCon.GetList().end())
+	while (it != m_GameObjects.GetList().end())
 	{
 		GameObject go = **it;
 		go.Draw();
@@ -44,7 +44,7 @@ GameObject* Application::Instantiate()
 
 GameObject* Application::Instantiate(GameObject* copy)
 {
-	m_GameObjectsCon.GetList().push_back(copy);
+	m_GameObjects.GetList().push_back(copy);
 	return copy;
 }
 
@@ -73,5 +73,5 @@ GameObject* Application::Instantiate(Vector2 position, float rotation, Vector2 s
 
 GameObject& Application::FindGameObject(int index)
 {
-	return m_GameObjectsCon.GetItem(index);
+	return m_GameObjects.GetItem(index);
 }

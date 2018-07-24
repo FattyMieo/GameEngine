@@ -2,9 +2,9 @@
 
 enum BlendMode
 {
-	BM_A = 0,
-	BM_B,
-	BM_C,
+	BM_Alpha = 0,
+	BM_Additive,
+	BM_Multiply,
 
 	BM_TOTAL
 };

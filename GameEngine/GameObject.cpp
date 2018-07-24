@@ -7,7 +7,7 @@
 
 GameObject::GameObject()
 {
-	m_blendMode = BM_A;
+
 }
 
 GameObject::GameObject(Sprite& sprite)
@@ -38,16 +38,6 @@ void GameObject::SetSprite(Sprite& sprite)
 Sprite& GameObject::GetSprite()
 {
 	return m_sprite;
-}
-
-void GameObject::SetBlendingMode(BlendMode mode)
-{
-	m_blendMode = mode;
-}
-
-BlendMode GameObject::GetBlendingMode()
-{
-	return m_blendMode;
 }
 
 void GameObject::Start()

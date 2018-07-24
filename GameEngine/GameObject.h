@@ -4,18 +4,16 @@
 #include "IDrawable.h"
 #include "ExtendList.h"
 #include "Component.h"
-#include "Sprite.h"
-#include "BlendMode.h"
 #include "Transform2D.h"
+#include "Sprite.h"
 
 class GameObject : public IRunnable, public IDrawable
 {
 private:
-	//std::list<Component> components;
+	//Container<Component> m_Components;
 
 	Transform2D m_transform;
 	Sprite m_sprite;
-	BlendMode m_blendMode;
 
 public:
 	
@@ -28,9 +26,6 @@ public:
 
 	void SetSprite(Sprite& sprite);
 	Sprite& GetSprite();
-
-	void SetBlendingMode(BlendMode blend);
-	BlendMode GetBlendingMode();
 
 	virtual void Start();
 	virtual void Update(float deltaTime);

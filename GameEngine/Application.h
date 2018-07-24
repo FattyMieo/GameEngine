@@ -12,8 +12,7 @@
 class Application : public IRunnable, public IDrawable
 {
 protected:
-	std::list<GameObject*> m_GameObjects;
-	Container<GameObject> m_GameObjectsCon;
+	Container<GameObject> m_GameObjects;
 
 public:
 	Application();

@@ -4,12 +4,16 @@
 
 Sprite::Sprite()
 {
+	SetBlendingMode(BM_Alpha);
+
 	m_width = 128;
 	m_height = 128;
 }
 
 Sprite::Sprite(const std::string& file)
 {
+	SetBlendingMode(BM_Alpha);
+
 	LoadFromFile(file);
 }
 
@@ -39,6 +43,16 @@ const Color& Sprite::GetColor()
 	return m_color;
 }
 
+void Sprite::SetBlendingMode(BlendMode mode)
+{
+	m_blendMode = mode;
+}
+
+BlendMode Sprite::GetBlendingMode()
+{
+	return m_blendMode;
+}
+
 void Sprite::Draw()
 {
 	Matrix transMatrix = Matrix::makeTranslationMatrix(Vector(m_transform.position.x, m_transform.position.y, 0.0f));
@@ -48,8 +62,33 @@ void Sprite::Draw()
 	Matrix viewMatrix = transMatrix * rotMatrix * scaleMatrix;
 
 	glLoadMatrixf((GLfloat*)viewMatrix.mVal);
+	
+	// To support alpha channel
+	glEnable(GL_BLEND);
+	glEnable(GL_ALPHA_TEST);
+
+	switch (GetBlendingMode())
+	{
+		case BM_Additive:
+			glBlendFunc(GL_ONE, GL_ONE);
+			break;
+		case BM_Multiply:
+			glBlendFunc(GL_ZERO, GL_SRC_COLOR);
+			//glBlendFunc(GL_DST_COLOR, GL_ZERO);
+			glDepthMask(false); //Ignore the depth mask, for semi-transparent objects
+			break;
+		case BM_Alpha:
+		default:
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			break;
+	}
 
 	Drawer::DrawSquare(m_textureID[0], 0, 0, m_width, m_height, GetColor().r, GetColor().g, GetColor().b);
+
+	glDepthMask(true); //Reenable the depth mask
+
+	glDisable(GL_BLEND);
+	glDisable(GL_ALPHA_TEST);
 }
 
 void Sprite::Draw(float x, float y, float rotation, float scaleX, float scaleY)
