@@ -31,7 +31,7 @@ void Drawer::DrawGeometry(GLuint textureID, GLfloat* vertices, GLfloat* texCoord
 
 	glVertexPointer(3, GL_FLOAT, 0, vertices);
 	glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
-	glColorPointer(3, GL_UNSIGNED_BYTE, 0, colors);
+	glColorPointer(4, GL_UNSIGNED_BYTE, 0, colors);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 
 	glDisableClientState(GL_VERTEX_ARRAY);
@@ -39,20 +39,22 @@ void Drawer::DrawGeometry(GLuint textureID, GLfloat* vertices, GLfloat* texCoord
 	glDisableClientState(GL_COLOR_ARRAY);
 }
 
-void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height, GLubyte r, GLubyte g, GLubyte b)
+void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height, int depth, GLubyte r, GLubyte g, GLubyte b, GLubyte a)
 {
 	float halfWidth = (float)width / 2.0f;
 	float halfHeight = (float)height / 2.0f;
 
+	float depth_f = depth / 10.0f;
+
 	GLfloat vertices[] =
 	{
-		x - halfWidth, y - halfHeight, 0.0f,
-		x - halfWidth, y + halfHeight, 0.0f,
-		x + halfWidth, y - halfHeight, 0.0f,
+		x - halfWidth, y - halfHeight, depth_f,
+		x - halfWidth, y + halfHeight, depth_f,
+		x + halfWidth, y - halfHeight, depth_f,
 
-		x - halfWidth, y + halfHeight, 0.0f,
-		x + halfWidth, y - halfHeight, 0.0f,
-		x + halfWidth, y + halfHeight, 0.0f
+		x - halfWidth, y + halfHeight, depth_f,
+		x + halfWidth, y - halfHeight, depth_f,
+		x + halfWidth, y + halfHeight, depth_f
 	};
 
 	GLfloat texCoords[] =
@@ -68,19 +70,19 @@ void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height, G
 
 	GLubyte colors[] =
 	{
-		r, g, b,
-		r, g, b,
-		r, g, b,
+		r, g, b, a,
+		r, g, b, a,
+		r, g, b, a,
 
-		r, g, b,
-		r, g, b,
-		r, g, b
+		r, g, b, a,
+		r, g, b, a,
+		r, g, b, a
 	};
 
 	DrawGeometry(textureID, vertices, texCoords, colors);
 }
 
-void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height)
+void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height, int depth)
 {
-	DrawSquare(textureID, x, y, width, height, 255, 255, 255);
+	DrawSquare(textureID, x, y, width, height, depth, 255, 255, 255, 255);
 }

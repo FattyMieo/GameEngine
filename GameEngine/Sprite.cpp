@@ -8,6 +8,8 @@ Sprite::Sprite()
 
 	m_width = 128;
 	m_height = 128;
+
+	SetRenderOrder(0);
 }
 
 Sprite::Sprite(const std::string& file)
@@ -15,6 +17,8 @@ Sprite::Sprite(const std::string& file)
 	SetBlendingMode(BM_Alpha);
 
 	LoadFromFile(file);
+
+	SetRenderOrder(0);
 }
 
 Sprite::~Sprite()
@@ -53,6 +57,16 @@ BlendMode Sprite::GetBlendingMode()
 	return m_blendMode;
 }
 
+void Sprite::SetRenderOrder(int order)
+{
+	m_renderOrder = order;
+}
+
+int Sprite::GetRenderOrder()
+{
+	return m_renderOrder;
+}
+
 void Sprite::Draw()
 {
 	Matrix transMatrix = Matrix::makeTranslationMatrix(Vector(m_transform.position.x, m_transform.position.y, 0.0f));
@@ -67,10 +81,13 @@ void Sprite::Draw()
 	glEnable(GL_BLEND);
 	glEnable(GL_ALPHA_TEST);
 
+	glDepthMask(true); //Enable the depth mask
+
 	switch (GetBlendingMode())
 	{
 		case BM_Additive:
-			glBlendFunc(GL_ONE, GL_ONE);
+			//glBlendFunc(GL_ONE, GL_ONE); //No anti-alias
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE); //With anti-alias (alpha value)
 			break;
 		case BM_Multiply:
 			glBlendFunc(GL_ZERO, GL_SRC_COLOR);
@@ -83,7 +100,7 @@ void Sprite::Draw()
 			break;
 	}
 
-	Drawer::DrawSquare(m_textureID[0], 0, 0, m_width, m_height, GetColor().r, GetColor().g, GetColor().b);
+	Drawer::DrawSquare(m_textureID[0], 0, 0, m_width, m_height, m_renderOrder, GetColor().r, GetColor().g, GetColor().b, GetColor().a);
 
 	glDepthMask(true); //Reenable the depth mask
 

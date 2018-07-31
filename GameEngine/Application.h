@@ -29,6 +29,8 @@ public:
 	GameObject* Instantiate(Vector2 position, float rotation, Vector2 scale);
 
 	GameObject& FindGameObject(int index);
+
+	void Destroy(GameObject* gameObject);
 };
 
 #endif

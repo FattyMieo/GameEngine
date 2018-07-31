@@ -1,4 +1,5 @@
 #include "MyApplication.h"
+#include "BlendMode.h"
 #include <iostream>
 
 MyApplication::MyApplication() : Application()
@@ -14,15 +15,24 @@ MyApplication::~MyApplication()
 void MyApplication::Start()
 {
 	GameObject* go;
+	Sprite* sp;
 
 	go = Instantiate(Vector2(320.0f, 240.0f), 0.0f);
-	go->GetSprite().LoadFromFile("../Media/Cat.bmp");
+	sp = &(go->GetSprite());
+	sp->LoadFromFile("../Media/Cat.bmp");
+	sp->SetBlendingMode(BM_Additive);
+	//sp->SetRenderOrder(1);
 
 	go = Instantiate(Vector2(100.0f, 240.0f), 0.0f);
-	go->GetSprite().LoadFromFile("../Media/Dog.bmp");
+	sp = &(go->GetSprite());
+	sp->LoadFromFile("../Media/Dog.bmp");
+	sp->SetBlendingMode(BM_Alpha);
 
-	go = Instantiate(Vector2(220.0f, 400.0f), 0.0f);
-	go->GetSprite().LoadFromFile("../Media/Cat.bmp");
+	cat = Instantiate(Vector2(220.0f, 400.0f), 0.0f);
+	sp = &(cat->GetSprite());
+	sp->LoadFromFile("../Media/Cat.bmp");
+	sp->SetBlendingMode(BM_Additive);
+	sp->SetColor(Color(255, 255, 255, 128));
 }
 
 void MyApplication::Update(float deltaTime)
@@ -42,9 +52,14 @@ void MyApplication::Update(float deltaTime)
 
 	FindGameObject(1).SetTransform(t);
 
-	t = FindGameObject(2).GetTransform();
+	t = cat->GetTransform();
 	t.rotation = 20.0f * time;
 	t.scale.SetEqual(0.3f * (sin(time + 3.0f) + 0.5f));
 
-	FindGameObject(2).SetTransform(t);
+	cat->SetTransform(t);
+
+	//Stress Test
+	//GameObject* go = Instantiate();
+	//std::cout << go->name << std::endl;
+	//Destroy(go);
 }

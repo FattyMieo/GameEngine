@@ -1,6 +1,7 @@
 #include "Application.h"
 #include <iostream>
 #include <cmath>
+#include <algorithm>
 
 Application::Application()
 {
@@ -31,8 +32,8 @@ void Application::Draw()
 
 	while (it != m_GameObjects.GetList().end())
 	{
-		GameObject go = **it;
-		go.Draw();
+		GameObject* go = *it;
+		go->Draw();
 		++it;
 	}
 }
@@ -74,4 +75,11 @@ GameObject* Application::Instantiate(Vector2 position, float rotation, Vector2 s
 GameObject& Application::FindGameObject(int index)
 {
 	return m_GameObjects.GetItem(index);
+}
+
+void Application::Destroy(GameObject* gameObject)
+{
+	GameObject* cachedGO = gameObject;
+	m_GameObjects.GetList().remove(gameObject);
+	delete gameObject;
 }

@@ -7,10 +7,10 @@
 
 GameObject::GameObject()
 {
-
+	name = "GameObject";
 }
 
-GameObject::GameObject(Sprite& sprite)
+GameObject::GameObject(Sprite& sprite) : GameObject()
 {
 	SetSprite(sprite);
 }

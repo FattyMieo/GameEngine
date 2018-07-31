@@ -20,6 +20,7 @@ private:
 	Transform2D m_transform;
 	Color m_color;
 	BlendMode m_blendMode;
+	int m_renderOrder;
 
 public:
 
@@ -33,6 +34,8 @@ public:
 	const Color& GetColor();
 	void SetBlendingMode(BlendMode blend);
 	BlendMode GetBlendingMode();
+	void SetRenderOrder(int order);
+	int GetRenderOrder();
 
 	virtual void Draw();
 	void Draw(float x, float y, float rotation, float scaleX, float scaleY);

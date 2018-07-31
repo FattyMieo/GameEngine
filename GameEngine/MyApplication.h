@@ -6,6 +6,7 @@ class MyApplication : public Application
 {
 public:
 	float time;
+	GameObject* cat;
 
 	MyApplication();
 	virtual ~MyApplication();

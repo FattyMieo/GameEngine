@@ -6,20 +6,22 @@
 #include "Component.h"
 #include "Transform2D.h"
 #include "Sprite.h"
+#include <string>
 
 class GameObject : public IRunnable, public IDrawable
 {
-private:
+protected:
 	//Container<Component> m_Components;
 
 	Transform2D m_transform;
 	Sprite m_sprite;
 
 public:
-	
+	std::string name;
+
 	GameObject();
 	GameObject(Sprite& sprite);
-	~GameObject();
+	virtual ~GameObject();
 
 	void SetTransform(Transform2D transform);
 	Transform2D GetTransform();
