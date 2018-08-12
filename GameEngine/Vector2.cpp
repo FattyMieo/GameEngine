@@ -22,3 +22,10 @@ void Vector2::SetEqual(float f)
 	this->x = f;
 	this->y = f;
 }
+
+Vector2& Vector2::operator+=(const Vector2& vec)
+{
+	this->x += vec.x;
+	this->y += vec.y;
+	return *this;
+}

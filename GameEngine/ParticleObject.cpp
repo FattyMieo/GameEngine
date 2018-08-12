@@ -37,6 +37,11 @@ void ParticleObject::Update(float deltaTime)
 	m_transform.position += m_velocity;
 
 	//Decrease life of particle every update
-	m_life--; //(Doesn't affected by FPS)
+	//m_life--; //(Doesn't affected by FPS)
 	m_life -= deltaTime; //(Affected by FPS, best)
+
+	if (m_life <= 0.0f)
+	{
+		//Destroy
+	}
 }

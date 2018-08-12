@@ -11,4 +11,5 @@ public:
 	~Vector2();
 
 	void SetEqual(float f);
+	Vector2& operator+=(const Vector2& vec);
 };
