@@ -15,12 +15,21 @@ Application::~Application()
 
 void Application::Start()
 {
-	std::cout << "Application Started" << std::endl;
+	//std::cout << "Application Started" << std::endl;
 }
 
 void Application::Update(float deltaTime)
 {
-	std::cout << "Application Updated" << std::endl;
+	//std::cout << "Application Updated" << std::endl;
+
+	std::list<GameObject*>::iterator it = m_GameObjects.GetList().begin();
+
+	while (it != m_GameObjects.GetList().end())
+	{
+		GameObject* go = *it;
+		go->Update(deltaTime);
+		++it;
+	}
 }
 
 void Application::Draw()
@@ -46,6 +55,7 @@ GameObject* Application::Instantiate()
 GameObject* Application::Instantiate(GameObject* copy)
 {
 	m_GameObjects.GetList().push_back(copy);
+	copy->Start();
 	return copy;
 }
 

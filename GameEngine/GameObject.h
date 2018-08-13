@@ -10,7 +10,7 @@
 
 class GameObject : public IRunnable, public IDrawable
 {
-protected:
+private:
 	//Container<Component> m_Components;
 
 	Transform2D m_transform;
@@ -23,8 +23,8 @@ public:
 	GameObject(Sprite& sprite);
 	virtual ~GameObject();
 
-	void SetTransform(Transform2D transform);
-	Transform2D GetTransform();
+	void SetTransform(Transform2D& transform);
+	Transform2D& GetTransform();
 
 	void SetSprite(Sprite& sprite);
 	Sprite& GetSprite();

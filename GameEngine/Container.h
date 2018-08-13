@@ -17,7 +17,7 @@ public:
 
 	~Container()
 	{
-		std::list<GameObject*>::iterator it = m_list.begin();
+		std::list<T*>::iterator it = m_list.begin();
 
 		while (it != m_list.end())
 		{

@@ -20,12 +20,12 @@ GameObject::~GameObject()
 
 }
 
-void GameObject::SetTransform(Transform2D transform)
+void GameObject::SetTransform(Transform2D& transform)
 {
 	m_transform = transform;
 }
 
-Transform2D GameObject::GetTransform()
+Transform2D& GameObject::GetTransform()
 {
 	return m_transform;
 }
