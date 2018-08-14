@@ -5,6 +5,9 @@
 #include "ParticleAffectorOverLifespan.h"
 #include "TransparencyAffectorOverLifespan.h"
 #include "ColorAffectorOverLifespan.h"
+#include "SizeAffectorOverLifespan.h"
+#include "RotationAffectorOverLifespan.h"
+#include "LimitVelocityAffectorOverLifespan.h"
 
 class ParticleAffectorGroup
 {
@@ -15,6 +18,9 @@ public:
 	GravityAffector* gravity;
 	TransparencyAffectorOverLifespan* transparencyOverLifespan;
 	ColorAffectorOverLifespan* colorOverLifespan;
+	SizeAffectorOverLifespan* sizeOverLifespan;
+	RotationAffectorOverLifespan* rotationOverLifespan;
+	LimitVelocityAffectorOverLifespan* limitVelocityOverLifespan;
 
 	ParticleAffectorGroup();
 	virtual ~ParticleAffectorGroup();

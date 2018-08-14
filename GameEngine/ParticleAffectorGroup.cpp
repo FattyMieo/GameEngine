@@ -10,6 +10,15 @@ ParticleAffectorGroup::ParticleAffectorGroup()
 
 	colorOverLifespan = new ColorAffectorOverLifespan();
 	wrappedVector.push_back(colorOverLifespan);
+
+	sizeOverLifespan = new SizeAffectorOverLifespan();
+	wrappedVector.push_back(sizeOverLifespan);
+
+	rotationOverLifespan = new RotationAffectorOverLifespan();
+	wrappedVector.push_back(rotationOverLifespan);
+
+	limitVelocityOverLifespan = new LimitVelocityAffectorOverLifespan();
+	wrappedVector.push_back(limitVelocityOverLifespan);
 }
 
 ParticleAffectorGroup::~ParticleAffectorGroup()

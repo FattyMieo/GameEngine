@@ -13,6 +13,7 @@ public:
 	~Vector2();
 
 	void SetEqual(float f);
+	float GetSquaredMagnitude();
 	Vector2 operator+(const Vector2& vec);
 	Vector2& operator+=(const Vector2& vec);
 	Vector2& operator*(const float f);

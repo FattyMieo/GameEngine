@@ -1,11 +1,12 @@
-//#pragma once
-//#include "ParticleAffectorOverLifespan.h"
-//
-//class TransparencyAffectorOverLifespan : public ParticleAffectorOverLifespan<unsigned int>
-//{
-//public:
-//	TransparencyAffectorOverLifespan();
-//	virtual ~TransparencyAffectorOverLifespan();
-//
-//	virtual void UpdateParticle(ParticleObject* particle);
-//};
+#pragma once
+#include "ParticleAffectorOverLifespan.h"
+#include "Vector2.h"
+
+class LimitVelocityAffectorOverLifespan : public ParticleAffectorOverLifespan<Vector2>
+{
+public:
+	LimitVelocityAffectorOverLifespan();
+	virtual ~LimitVelocityAffectorOverLifespan();
+
+	virtual void UpdateParticle(ParticleObject* particle);
+};

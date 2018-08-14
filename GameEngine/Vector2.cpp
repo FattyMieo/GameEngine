@@ -28,6 +28,11 @@ void Vector2::SetEqual(float f)
 	this->y = f;
 }
 
+float Vector2::GetSquaredMagnitude()
+{
+	return (this->x * this->x) + (this->y * this->y);
+}
+
 Vector2 Vector2::operator+(const Vector2& vec)
 {
 	return Vector2(this->x + vec.x,	this->y + vec.y);

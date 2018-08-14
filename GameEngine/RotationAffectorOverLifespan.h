@@ -1,11 +1,11 @@
-//#pragma once
-//#include "ParticleAffectorOverLifespan.h"
-//
-//class TransparencyAffectorOverLifespan : public ParticleAffectorOverLifespan<unsigned int>
-//{
-//public:
-//	TransparencyAffectorOverLifespan();
-//	virtual ~TransparencyAffectorOverLifespan();
-//
-//	virtual void UpdateParticle(ParticleObject* particle);
-//};
+#pragma once
+#include "ParticleAffectorOverLifespan.h"
+
+class RotationAffectorOverLifespan : public ParticleAffectorOverLifespan<float>
+{
+public:
+	RotationAffectorOverLifespan();
+	virtual ~RotationAffectorOverLifespan();
+
+	virtual void UpdateParticle(ParticleObject* particle);
+};
