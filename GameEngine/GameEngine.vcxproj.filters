@@ -114,6 +114,18 @@
     <ClCompile Include="TransparencyAffectorOverLifespan.cpp">
       <Filter>Source Files\Engine\ParticleSystem\Affectors</Filter>
     </ClCompile>
+    <ClCompile Include="ColorAffectorOverLifespan.cpp">
+      <Filter>Source Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClCompile>
+    <ClCompile Include="LimitVelocityAffectorOverLifespan.cpp">
+      <Filter>Source Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClCompile>
+    <ClCompile Include="RotationAffectorOverLifespan.cpp">
+      <Filter>Source Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClCompile>
+    <ClCompile Include="SizeAffectorOverLifespan.cpp">
+      <Filter>Source Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IDestroyable.h">
@@ -205,6 +217,18 @@
     </ClInclude>
     <ClInclude Include="ListExtension.h">
       <Filter>Header Files\Engine\Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorAffectorOverLifespan.h">
+      <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClInclude>
+    <ClInclude Include="LimitVelocityAffectorOverLifespan.h">
+      <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClInclude>
+    <ClInclude Include="RotationAffectorOverLifespan.h">
+      <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClInclude>
+    <ClInclude Include="SizeAffectorOverLifespan.h">
+      <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

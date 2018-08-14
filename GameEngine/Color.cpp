@@ -8,12 +8,28 @@ Color::Color()
 	a = 255;
 }
 
+Color::Color(GLubyte c)
+{
+	this->r = c;
+	this->g = c;
+	this->b = c;
+	this->a = 255;
+}
+
 Color::Color(GLubyte c, GLubyte a)
 {
 	this->r = c;
 	this->g = c;
 	this->b = c;
 	this->a = a;
+}
+
+Color::Color(GLubyte r, GLubyte g, GLubyte b)
+{
+	this->r = r;
+	this->g = g;
+	this->b = b;
+	this->a = 255;
 }
 
 Color::Color(GLubyte r, GLubyte g, GLubyte b, GLubyte a)

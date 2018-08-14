@@ -12,7 +12,9 @@ public:
 	GLubyte a;
 
 	Color();
-	Color(GLubyte g, GLubyte a);
+	Color(GLubyte c);
+	Color(GLubyte c, GLubyte a);
+	Color(GLubyte r, GLubyte g, GLubyte b);
 	Color(GLubyte r, GLubyte g, GLubyte b, GLubyte a);
 
 	static Color Random(Color a, Color b);

@@ -149,11 +149,13 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="ColorAffectorOverLifespan.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Drawer.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GravityAffector.cpp" />
+    <ClCompile Include="LimitVelocityAffectorOverLifespan.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="MyApplication.cpp" />
     <ClCompile Include="ParticleAffectorBase.cpp" />
@@ -161,6 +163,8 @@
     <ClCompile Include="ParticleAttributeBase.cpp" />
     <ClCompile Include="ParticleObject.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="RotationAffectorOverLifespan.cpp" />
+    <ClCompile Include="SizeAffectorOverLifespan.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Transform2D.cpp" />
     <ClCompile Include="TransparencyAffectorOverLifespan.cpp" />
@@ -171,9 +175,11 @@
     <ClInclude Include="Bitmap.h" />
     <ClInclude Include="BlendMode.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="ColorAffectorOverLifespan.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Container.h" />
     <ClInclude Include="Drawer.h" />
+    <ClInclude Include="LimitVelocityAffectorOverLifespan.h" />
     <ClInclude Include="ListExtension.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GravityAffector.h" />
@@ -192,6 +198,8 @@
     <ClInclude Include="ParticleObject.h" />
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="ParticleAffectorOverLifespan.h" />
+    <ClInclude Include="RotationAffectorOverLifespan.h" />
+    <ClInclude Include="SizeAffectorOverLifespan.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Transform2D.h" />
     <ClInclude Include="TransparencyAffectorOverLifespan.h" />

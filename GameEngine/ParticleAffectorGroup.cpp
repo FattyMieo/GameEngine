@@ -7,6 +7,9 @@ ParticleAffectorGroup::ParticleAffectorGroup()
 
 	transparencyOverLifespan = new TransparencyAffectorOverLifespan();
 	wrappedVector.push_back(transparencyOverLifespan);
+
+	colorOverLifespan = new ColorAffectorOverLifespan();
+	wrappedVector.push_back(colorOverLifespan);
 }
 
 ParticleAffectorGroup::~ParticleAffectorGroup()

@@ -36,13 +36,13 @@ void MyApplication::Start()
 
 	pSys = (ParticleSystem*)Instantiate(new ParticleSystem());
 	pSys->GetTransform().position = Vector2(320.0f, 240.0f);
-	pSys->GetEmitterAttributes().emissionRate = 25.0f;
+	pSys->GetEmitterAttributes().emissionRate = 250.0f;
 	pSys->GetBaseAttributes().startSize.SetEqual(0.15f);
 
 	pSys->GetAffectors().gravity->value = Vector2(0.0f, -0.1f);
 	pSys->GetAffectors().gravity->SetActive(true);
 
-	pSys->GetBaseAttributes().random.startVelocity.min = Vector2(-2.5f, 0.0f);
+	pSys->GetBaseAttributes().random.startVelocity.min = Vector2(-2.5f, 1.0f);
 	pSys->GetBaseAttributes().random.startVelocity.max = Vector2(2.5f, 1.0f);
 	pSys->GetBaseAttributes().random.startVelocity.useRandom = true;
 
@@ -51,9 +51,21 @@ void MyApplication::Start()
 	pSys->GetBaseAttributes().random.startColor.useRandom = true;
 
 	pSys->GetBaseAttributes().startLifespan = 2.5f;
-	pSys->GetAffectors().transparencyOverLifespan->lifespanValue[0.0f] = 255;
-	pSys->GetAffectors().transparencyOverLifespan->lifespanValue[1.0f] = 0;
+
+	pSys->GetBaseAttributes().random.startLifespan.min = -0.25f;
+	pSys->GetBaseAttributes().random.startLifespan.max = 0.25f;
+	pSys->GetBaseAttributes().random.startLifespan.useRandom = true;
+
+	pSys->GetAffectors().transparencyOverLifespan->lifespanValue[0.0f] = 0;
+	pSys->GetAffectors().transparencyOverLifespan->lifespanValue[0.5f] = 255;
+	pSys->GetAffectors().transparencyOverLifespan->lifespanValue[1.0f] = 255;
 	pSys->GetAffectors().transparencyOverLifespan->SetActive(true);
+
+	pSys->GetAffectors().colorOverLifespan->lifespanValue[0.25f] = Color(255, 0, 0);
+	pSys->GetAffectors().colorOverLifespan->lifespanValue[0.5f] = Color(255, 255, 0);
+	pSys->GetAffectors().colorOverLifespan->lifespanValue[0.75f] = Color(0, 255, 255);
+	pSys->GetAffectors().colorOverLifespan->lifespanValue[1.0f] = Color(0, 0, 255);
+	pSys->GetAffectors().colorOverLifespan->SetActive(true);
 }
 
 void MyApplication::Update(float deltaTime)
