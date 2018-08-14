@@ -1,14 +1,20 @@
 #pragma once
 
 #include <GLFW/glfw3.h>
+#include "MathExtension.h"
 
-struct Color
+class Color
 {
+public:
 	GLubyte r;
 	GLubyte g;
 	GLubyte b;
 	GLubyte a;
 
 	Color();
+	Color(GLubyte g, GLubyte a);
 	Color(GLubyte r, GLubyte g, GLubyte b, GLubyte a);
+
+	static Color Lerp(Color a, Color b, float t);
+	static Color Random(Color a, Color b);
 };

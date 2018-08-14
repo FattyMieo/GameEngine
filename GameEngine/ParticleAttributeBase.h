@@ -11,11 +11,10 @@ struct ParticleAttributeBase
 	float startDelay;
 	float startLifespan;
 	Vector2 startVelocity;
-	Vector2 startAcceleration; //Gravity
+	Vector2 startAcceleration;
 	Vector2 startSize;
 	float startRotation;
 	Color startColor;
-
 
 	ParticleAttributeBase()
 	{

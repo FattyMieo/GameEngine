@@ -108,6 +108,9 @@
     <ClCompile Include="ParticleAffectorGroup.cpp">
       <Filter>Source Files\Engine\ParticleSystem\Affectors</Filter>
     </ClCompile>
+    <ClCompile Include="RandomColorAffector.cpp">
+      <Filter>Source Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IDestroyable.h">
@@ -184,6 +187,12 @@
     </ClInclude>
     <ClInclude Include="ParticleAffectorGroup.h">
       <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomColorAffector.h">
+      <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClInclude>
+    <ClInclude Include="MathExtension.h">
+      <Filter>Header Files\Engine\Extensions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

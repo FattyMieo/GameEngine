@@ -160,6 +160,7 @@
     <ClCompile Include="ParticleAffectorGroup.cpp" />
     <ClCompile Include="ParticleObject.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="RandomColorAffector.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Transform2D.cpp" />
     <ClCompile Include="Vector2.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="IDestroyable.h" />
     <ClInclude Include="IDrawable.h" />
     <ClInclude Include="IRunnable.h" />
+    <ClInclude Include="MathExtension.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MyApplication.h" />
     <ClInclude Include="ParticleAffectorBase.h" />
@@ -186,6 +188,7 @@
     <ClInclude Include="ParticleAttributeEmitter.h" />
     <ClInclude Include="ParticleObject.h" />
     <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="RandomColorAffector.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Transform2D.h" />
     <ClInclude Include="Vector.h" />

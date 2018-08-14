@@ -4,6 +4,8 @@
 #include <Windows.h>
 #include <GL/GLU.h>
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "MyApplication.h"
 #include "Bitmap.h"
 
@@ -46,6 +48,9 @@ void gameUpdate(float deltaTime)
 
 int main(void)
 {
+	//Set random seed
+	srand((unsigned int)time(NULL));
+
 	GLFWwindow* window;
 	bool useVSync = true;
 	float lastUpdateTime = (float)glfwGetTime();

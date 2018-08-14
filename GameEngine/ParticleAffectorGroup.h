@@ -2,6 +2,7 @@
 #include <vector>
 #include "ParticleAffectorBase.h"
 #include "GravityAffector.h"
+#include "RandomColorAffector.h"
 
 class ParticleAffectorGroup
 {
@@ -10,6 +11,7 @@ private:
 
 public:
 	GravityAffector* gravity;
+	RandomColorAffector* randColor;
 
 	ParticleAffectorGroup();
 	virtual ~ParticleAffectorGroup();

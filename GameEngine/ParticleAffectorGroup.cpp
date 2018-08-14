@@ -4,6 +4,9 @@ ParticleAffectorGroup::ParticleAffectorGroup()
 {
 	gravity = new GravityAffector();
 	wrappedVector.push_back(gravity);
+
+	randColor = new RandomColorAffector();
+	wrappedVector.push_back(randColor);
 }
 
 ParticleAffectorGroup::~ParticleAffectorGroup()
