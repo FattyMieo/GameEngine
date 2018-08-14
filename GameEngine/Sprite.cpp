@@ -1,6 +1,5 @@
 #include "Sprite.h"
 #include "Drawer.h"
-#include <iostream>
 
 Sprite::Sprite()
 {

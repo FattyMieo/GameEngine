@@ -4,26 +4,31 @@
 #include "Container.h"
 #include "ParticleObject.h"
 #include "ParticleAttributeBase.h"
+#include "ParticleAttributeEmitter.h"
+#include "ParticleAffectorGroup.h"
 
 class ParticleSystem : public GameObject
 {
 protected:
-	//Add other ParticleAffectors
+	//ParticleAffectors (change to permanent struct is better)
+	ParticleAffectorGroup m_affectors;
 	Container<ParticleObject> m_particles;
 	unsigned int particleCount;
 
-	ParticleAttributeBase m_attributes;
+	ParticleAttributeBase m_bAttributes;
+	ParticleAttributeEmitter m_eAttributes;
 	float systemTime;
 	float emissionTimer;
-
-	Vector2 gravity;
 	
 public:
 	ParticleSystem();
 	virtual ~ParticleSystem();
 
 	Container<ParticleObject> GetParticles();
-	ParticleAttributeBase& GetAttributes();
+	ParticleAttributeBase& GetBaseAttributes();
+	ParticleAttributeEmitter& GetEmitterAttributes();
+
+	ParticleAffectorGroup& GetAffectors();
 
 	virtual void Start();
 	virtual void Update(float deltaTime);

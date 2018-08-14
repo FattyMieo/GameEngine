@@ -1,5 +1,4 @@
 #include "ParticleObject.h"
-#include <iostream>
 
 ParticleObject::ParticleObject() : GameObject()
 {
@@ -16,7 +15,7 @@ ParticleObject::ParticleObject() : GameObject()
 	);
 }
 
-ParticleObject::ParticleObject(Sprite& sprite, Vector2 pos, float rot, Vector2 size, Vector2 vel, Vector2 accel)
+ParticleObject::ParticleObject(Sprite sprite, Vector2 pos, float rot, Vector2 size, Vector2 vel, Vector2 accel)
 	: GameObject(sprite)
 {
 	GetSprite().SetBlendingMode(BM_Additive);
@@ -34,7 +33,7 @@ ParticleObject::ParticleObject(Vector2 pos, float rot, Vector2 size, Vector2 vel
 ParticleObject::ParticleObject(Transform2D trans, Vector2 vel, Vector2 accel)
 	: ParticleObject(trans.position, trans.rotation, trans.scale, vel, accel) { }
 
-ParticleObject::ParticleObject(Sprite& sprite, Transform2D trans, Vector2 vel, Vector2 accel)
+ParticleObject::ParticleObject(Sprite sprite, Transform2D trans, Vector2 vel, Vector2 accel)
 	: ParticleObject(sprite, trans.position, trans.rotation, trans.scale, vel, accel) { }
 
 ParticleObject::~ParticleObject() { }

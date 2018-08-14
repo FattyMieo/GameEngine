@@ -148,12 +148,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Color.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Drawer.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GravityAffector.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="MyApplication.cpp" />
+    <ClCompile Include="ParticleAffectorBase.cpp" />
+    <ClCompile Include="ParticleAffectorGroup.cpp" />
     <ClCompile Include="ParticleObject.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -170,15 +174,18 @@
     <ClInclude Include="Drawer.h" />
     <ClInclude Include="ExtendList.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GravityAffector.h" />
     <ClInclude Include="IDestroyable.h" />
     <ClInclude Include="IDrawable.h" />
     <ClInclude Include="IRunnable.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MyApplication.h" />
+    <ClInclude Include="ParticleAffectorBase.h" />
+    <ClInclude Include="ParticleAffectorGroup.h" />
     <ClInclude Include="ParticleAttributeBase.h" />
+    <ClInclude Include="ParticleAttributeEmitter.h" />
     <ClInclude Include="ParticleObject.h" />
     <ClInclude Include="ParticleSystem.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Transform2D.h" />
     <ClInclude Include="Vector.h" />

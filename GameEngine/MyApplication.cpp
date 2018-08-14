@@ -1,5 +1,4 @@
 #include "MyApplication.h"
-#include "BlendMode.h"
 #include <iostream>
 
 MyApplication::MyApplication() : Application()
@@ -37,8 +36,9 @@ void MyApplication::Start()
 
 	pSys = (ParticleSystem*)Instantiate(new ParticleSystem());
 	pSys->GetTransform().position = Vector2(320.0f, 240.0f);
-	pSys->GetAttributes().startSize.SetEqual(0.1f);
-	//pSys->GetAttributes().
+	pSys->GetBaseAttributes().startSize.SetEqual(0.1f);
+	pSys->GetAffectors().gravity->value = Vector2(0.0f, -0.1f);
+	pSys->GetAffectors().gravity->SetActive(true);
 }
 
 void MyApplication::Update(float deltaTime)
@@ -67,11 +67,11 @@ void MyApplication::Update(float deltaTime)
 	cat->SetTransform(t);
 
 	//Temp test
-	float rx = (((rand() % (100 * 2)) - 100.0f) / 100.0f) * 1.0f;
-	float ry = (((rand() % (100 * 2)) - 100.0f) / 100.0f) * 1.0f;
-	pSys->GetAttributes().startVelocity = Vector2(rx, ry);
+	float rx = (((rand() % (100 * 2)) - 100.0f) / 100.0f) * 5.0f;
+	float ry = (((rand() % (100 * 2)) - 100.0f) / 100.0f) * 5.0f;
+	pSys->GetBaseAttributes().startVelocity = Vector2(rx, ry);
 
-	pSys->GetAttributes().startColor = Color(rand() % 256, rand() % 256, rand() % 256, 255);
+	pSys->GetBaseAttributes().startColor = Color(rand() % 192 + 64, rand() % 192 + 64, rand() % 192 + 64, 255);
 
 	//Stress Test
 	//GameObject* go = Instantiate();

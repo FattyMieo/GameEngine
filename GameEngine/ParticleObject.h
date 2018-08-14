@@ -14,9 +14,9 @@ private:
 public:
 	ParticleObject();
 	ParticleObject(Vector2 pos, float rot, Vector2 scale, Vector2 vel, Vector2 accel);
-	ParticleObject(Sprite& sprite, Vector2 pos, float rot, Vector2 scale, Vector2 vel, Vector2 accel);
+	ParticleObject(Sprite sprite, Vector2 pos, float rot, Vector2 scale, Vector2 vel, Vector2 accel);
 	ParticleObject(Transform2D trans, Vector2 vel, Vector2 accel);
-	ParticleObject(Sprite& sprite, Transform2D trans, Vector2 vel, Vector2 accel);
+	ParticleObject(Sprite sprite, Transform2D trans, Vector2 vel, Vector2 accel);
 	virtual ~ParticleObject();
 
 	void Initialize(Vector2 pos, float rot, Vector2 scale, Vector2 vel, Vector2 accel);

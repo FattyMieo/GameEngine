@@ -1,26 +1,33 @@
 #include "ParticleSystem.h"
-#include <iostream>
 
 ParticleSystem::ParticleSystem() : GameObject()
 {
 
 }
 
-ParticleSystem::~ParticleSystem() { }
+ParticleSystem::~ParticleSystem()
+{
+
+}
 
 Container<ParticleObject> ParticleSystem::GetParticles()
 {
 	return m_particles;
 }
 
-ParticleAttributeBase& ParticleSystem::GetAttributes()
+ParticleAttributeBase& ParticleSystem::GetBaseAttributes()
 {
-	return m_attributes;
+	return m_bAttributes;
 }
 
-void RestartSystem()
+ParticleAttributeEmitter& ParticleSystem::GetEmitterAttributes()
 {
-	
+	return m_eAttributes;
+}
+
+ParticleAffectorGroup& ParticleSystem::GetAffectors()
+{
+	return m_affectors;
 }
 
 void ParticleSystem::Start()
@@ -34,15 +41,15 @@ void ParticleSystem::Update(float deltaTime)
 
 	bool canEmit = true;
 
-	if (systemTime <= GetAttributes().startDelay)
+	if (systemTime <= GetBaseAttributes().startDelay)
 	{
 		canEmit = false;
 	}
 	else
 	{
-		if (!GetAttributes().looping)
+		if (!GetBaseAttributes().looping)
 		{
-			if (systemTime > GetAttributes().duration + GetAttributes().startDelay)
+			if (systemTime > GetBaseAttributes().duration + GetBaseAttributes().startDelay)
 			{
 				canEmit = false;
 			}
@@ -51,18 +58,18 @@ void ParticleSystem::Update(float deltaTime)
 
 	if (canEmit)
 	{
-		float newEmission = deltaTime * GetAttributes().emissionRate;
+		float newEmission = deltaTime * GetEmitterAttributes().emissionRate;
 		//Limiting the FPS to 60 (0.016 ms)
-		if (newEmission > 0.0167f * GetAttributes().emissionRate)
+		if (newEmission > 0.0167f * GetEmitterAttributes().emissionRate)
 		{
-			newEmission = 0.0167f * GetAttributes().emissionRate;
+			newEmission = 0.0167f * GetEmitterAttributes().emissionRate;
 		}
 
 		emissionTimer += newEmission;
 
 		while (emissionTimer >= 1.0f)
 		{
-			if (particleCount > GetAttributes().maxParticles)
+			if (particleCount > GetBaseAttributes().maxParticles)
 			{
 				emissionTimer -= floor(emissionTimer);
 				break;
@@ -72,15 +79,16 @@ void ParticleSystem::Update(float deltaTime)
 
 			ParticleObject* particle = new ParticleObject
 			(
+				GetEmitterAttributes().emitterSprite,
 				GetTransform().position,
-				GetAttributes().startRotation,
-				GetAttributes().startSize,
-				GetAttributes().startVelocity,
-				GetAttributes().startAcceleration
+				GetBaseAttributes().startRotation,
+				GetBaseAttributes().startSize,
+				GetBaseAttributes().startVelocity,
+				GetBaseAttributes().startAcceleration
 			);
 
-			particle->GetSprite().SetColor(GetAttributes().startColor);
-			particle->SetFullLife(GetAttributes().startLifespan);
+			particle->GetSprite().SetColor(GetBaseAttributes().startColor);
+			particle->SetFullLife(GetBaseAttributes().startLifespan);
 
 			m_particles.GetList().push_back(particle);
 			particle->Start();
@@ -101,10 +109,17 @@ void ParticleSystem::Update(float deltaTime)
 			delete particle;
 			continue;
 		}
-
-		if (GetAttributes().simulatedGlobally)
+		
+		std::vector<ParticleAffectorBase*>::iterator a_it = m_affectors.GetVector().begin();
+		while (a_it != m_affectors.GetVector().end())
 		{
-			//particle->GetTransform().position = localPos + this->GetTransform().position;
+			ParticleAffectorBase* affector = *a_it;
+			if (affector->IsActive())
+			{
+				affector->UpdateParticle(particle);
+			}
+
+			++a_it;
 		}
 
 		particle->Update(deltaTime);

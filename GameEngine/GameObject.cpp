@@ -1,7 +1,3 @@
-// Transformation
-// Sprite Pointer
-// 
-
 #include "GameObject.h"
 #include "Application.h"
 
@@ -10,7 +6,7 @@ GameObject::GameObject()
 	name = "GameObject";
 }
 
-GameObject::GameObject(Sprite& sprite) : GameObject()
+GameObject::GameObject(Sprite sprite) : GameObject()
 {
 	SetSprite(sprite);
 }
@@ -30,7 +26,7 @@ Transform2D& GameObject::GetTransform()
 	return m_transform;
 }
 
-void GameObject::SetSprite(Sprite& sprite)
+void GameObject::SetSprite(Sprite sprite)
 {
 	m_sprite = sprite;
 }

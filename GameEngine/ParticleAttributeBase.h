@@ -6,8 +6,6 @@ struct ParticleAttributeBase
 {
 	float duration;
 	bool looping;
-	//bool prewarm;
-	bool simulatedGlobally;
 	unsigned int maxParticles;
 
 	float startDelay;
@@ -18,9 +16,6 @@ struct ParticleAttributeBase
 	float startRotation;
 	Color startColor;
 
-	float emissionRate;
-	//float emissionRateOverTime;
-	//float emissionRateOverDistance;
 
 	ParticleAttributeBase()
 	{
@@ -34,8 +29,6 @@ struct ParticleAttributeBase
 		startSize = Vector2(1.0f, 1.0f);
 		startRotation = 0.0f;
 		startColor = Color(255, 255, 255, 255);
-		simulatedGlobally = false;
 		maxParticles = 1000;
-		emissionRate = 10.0f;
 	}
 };

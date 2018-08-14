@@ -13,111 +13,177 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Imported Libraries">
+      <UniqueIdentifier>{e1ea2aa4-cd49-46b0-a868-3bb611e59ede}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine">
+      <UniqueIdentifier>{0f990380-e4d1-4b62-8469-98098ec5c28d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\ParticleSystem">
+      <UniqueIdentifier>{e191460f-53db-460a-a1f1-f299db5fc094}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\ParticleSystem\Affectors">
+      <UniqueIdentifier>{293cf472-c772-4f3f-8e9c-7a0dd2faed21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Enums">
+      <UniqueIdentifier>{229dc94f-c670-4d7c-89a6-4882a716537e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Interfaces">
+      <UniqueIdentifier>{07d5fec9-85a2-4e78-a20c-cda9e5d673af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Project">
+      <UniqueIdentifier>{861c47fe-4c6a-47c1-a54b-02baa13da24d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Imported Libraries">
+      <UniqueIdentifier>{b44a4274-5317-4006-a73a-c1f41f37afe9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{dbbbe603-27c4-49c7-ad6b-52f89d749f86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Project">
+      <UniqueIdentifier>{150659e7-a297-48ef-af0b-15b08798fc40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\ParticleSystem">
+      <UniqueIdentifier>{a3f1c163-379b-495a-9271-c4e8eddf2bfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Structs">
+      <UniqueIdentifier>{fc095649-8878-48ae-8236-134acfe52a9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Extensions">
+      <UniqueIdentifier>{fa0fc735-b05a-4ecd-bba5-0c0e3b55f15a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\ParticleSystem\Affectors">
+      <UniqueIdentifier>{51f0d01e-3788-44ef-a08c-34d88a5b6a14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Structs">
+      <UniqueIdentifier>{f235196d-a1b4-41f4-a331-d5fcffc749c6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameEngine.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Matrix.cpp">
+      <Filter>Source Files\Imported Libraries</Filter>
     </ClCompile>
     <ClCompile Include="Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Drawer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="Component.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Transform2D.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Drawer.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="MyApplication.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Project</Filter>
     </ClCompile>
     <ClCompile Include="ParticleObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Engine\ParticleSystem</Filter>
     </ClCompile>
     <ClCompile Include="ParticleSystem.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Engine\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform2D.cpp">
+      <Filter>Source Files\Engine\Structs</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>Source Files\Engine\Structs</Filter>
+    </ClCompile>
+    <ClCompile Include="GravityAffector.cpp">
+      <Filter>Source Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleAffectorBase.cpp">
+      <Filter>Source Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Source Files\Engine\Structs</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleAffectorGroup.cpp">
+      <Filter>Source Files\Engine\ParticleSystem\Affectors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Drawer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Bitmap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ExtendList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BlendMode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IRunnable.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="IDestroyable.h">
+      <Filter>Header Files\Engine\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="IDrawable.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Engine\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IRunnable.h">
+      <Filter>Header Files\Engine\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Header Files\Imported Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Header Files\Imported Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap.h">
+      <Filter>Header Files\Imported Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="BlendMode.h">
+      <Filter>Header Files\Engine\Enums</Filter>
     </ClInclude>
     <ClInclude Include="Color.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Engine\Structs</Filter>
     </ClInclude>
-    <ClInclude Include="Container.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Vector2.h">
+      <Filter>Header Files\Engine\Structs</Filter>
     </ClInclude>
-    <ClInclude Include="MyApplication.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Transform2D.h">
+      <Filter>Header Files\Engine\Structs</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleObject.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Drawer.h">
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Application.h">
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="IDestroyable.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Component.h">
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystem.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="ParticleAttributeBase.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Engine\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleAttributeEmitter.h">
+      <Filter>Header Files\Engine\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleAffectorBase.h">
+      <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClInclude>
+    <ClInclude Include="GravityAffector.h">
+      <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleObject.h">
+      <Filter>Header Files\Engine\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystem.h">
+      <Filter>Header Files\Engine\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="MyApplication.h">
+      <Filter>Header Files\Project</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtendList.h">
+      <Filter>Header Files\Engine\Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="Container.h">
+      <Filter>Header Files\Engine\Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleAffectorGroup.h">
+      <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

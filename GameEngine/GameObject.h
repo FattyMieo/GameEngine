@@ -20,13 +20,13 @@ public:
 	std::string name;
 
 	GameObject();
-	GameObject(Sprite& sprite);
+	GameObject(Sprite sprite);
 	virtual ~GameObject();
 
 	void SetTransform(Transform2D& transform);
 	Transform2D& GetTransform();
 
-	void SetSprite(Sprite& sprite);
+	void SetSprite(Sprite sprite);
 	Sprite& GetSprite();
 
 	virtual void Start();

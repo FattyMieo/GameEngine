@@ -1,7 +1,5 @@
 #include "Application.h"
 #include <iostream>
-#include <cmath>
-#include <algorithm>
 
 Application::Application()
 {
