@@ -2,7 +2,8 @@
 #include <vector>
 #include "ParticleAffectorBase.h"
 #include "GravityAffector.h"
-#include "RandomColorAffector.h"
+#include "ParticleAffectorOverLifespan.h"
+#include "TransparencyAffectorOverLifespan.h"
 
 class ParticleAffectorGroup
 {
@@ -11,7 +12,7 @@ private:
 
 public:
 	GravityAffector* gravity;
-	RandomColorAffector* randColor;
+	TransparencyAffectorOverLifespan* transparencyOverLifespan;
 
 	ParticleAffectorGroup();
 	virtual ~ParticleAffectorGroup();

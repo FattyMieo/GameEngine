@@ -38,12 +38,22 @@ void MyApplication::Start()
 	pSys->GetTransform().position = Vector2(320.0f, 240.0f);
 	pSys->GetEmitterAttributes().emissionRate = 25.0f;
 	pSys->GetBaseAttributes().startSize.SetEqual(0.15f);
+
 	pSys->GetAffectors().gravity->value = Vector2(0.0f, -0.1f);
 	pSys->GetAffectors().gravity->SetActive(true);
-	//Error
-	pSys->GetAffectors().randColor->minValue = Color(64, 255);
-	pSys->GetAffectors().randColor->maxValue = Color(255, 255);
-	pSys->GetAffectors().randColor->SetActive(false);
+
+	pSys->GetBaseAttributes().random.startVelocity.min = Vector2(-2.5f, 0.0f);
+	pSys->GetBaseAttributes().random.startVelocity.max = Vector2(2.5f, 1.0f);
+	pSys->GetBaseAttributes().random.startVelocity.useRandom = true;
+
+	pSys->GetBaseAttributes().random.startColor.min = Color(64, 255);
+	pSys->GetBaseAttributes().random.startColor.max = Color(255, 255);
+	pSys->GetBaseAttributes().random.startColor.useRandom = true;
+
+	pSys->GetBaseAttributes().startLifespan = 2.5f;
+	pSys->GetAffectors().transparencyOverLifespan->lifespanValue[0.0f] = 255;
+	pSys->GetAffectors().transparencyOverLifespan->lifespanValue[1.0f] = 0;
+	pSys->GetAffectors().transparencyOverLifespan->SetActive(true);
 }
 
 void MyApplication::Update(float deltaTime)
@@ -70,14 +80,6 @@ void MyApplication::Update(float deltaTime)
 	t.scale.SetEqual(0.3f * (sin(time + 3.0f) + 0.5f));
 
 	cat->SetTransform(t);
-
-	//Temp test (Not working as intended when the particle numbers are higher)
-	//Switch to affectors to update every single particle correctly
-	float rx = (((rand() % (100 * 2)) - 100.0f) / 100.0f) * 5.0f;
-	float ry = (((rand() % (100 * 2)) - 100.0f) / 100.0f) * 5.0f;
-	pSys->GetBaseAttributes().startAcceleration = Vector2(rx, ry) * 0.1f;
-
-	pSys->GetBaseAttributes().startColor = Color::Random(Color(64, 255), Color(255, 255));
 
 	//Stress Test
 	//GameObject* go = Instantiate();

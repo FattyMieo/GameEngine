@@ -1,7 +1,7 @@
 #pragma once
 
 #include <list>
-#include "ExtendList.h"
+#include "ListExtension.h"
 
 template<class T>
 class Container
@@ -35,6 +35,6 @@ public:
 
 	T& GetItem(unsigned int index)
 	{
-		return ExtendList::Get(GetList(), index);
+		return ListExtension::Get(GetList(), index);
 	}
 };

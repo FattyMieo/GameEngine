@@ -41,7 +41,7 @@ void ParticleSystem::Update(float deltaTime)
 
 	bool canEmit = true;
 
-	if (systemTime <= GetBaseAttributes().startDelay)
+	if (systemTime <= GetBaseAttributes().GetStartDelay())
 	{
 		canEmit = false;
 	}
@@ -49,13 +49,14 @@ void ParticleSystem::Update(float deltaTime)
 	{
 		if (!GetBaseAttributes().looping)
 		{
-			if (systemTime > GetBaseAttributes().duration + GetBaseAttributes().startDelay)
+			if (systemTime > GetBaseAttributes().duration + GetBaseAttributes().GetStartDelay())
 			{
 				canEmit = false;
 			}
 		}
 	}
 
+	//Generate new particles
 	if (canEmit)
 	{
 		float newEmission = deltaTime * GetEmitterAttributes().emissionRate;
@@ -81,14 +82,14 @@ void ParticleSystem::Update(float deltaTime)
 			(
 				GetEmitterAttributes().emitterSprite,
 				GetTransform().position,
-				GetBaseAttributes().startRotation,
-				GetBaseAttributes().startSize,
-				GetBaseAttributes().startVelocity,
-				GetBaseAttributes().startAcceleration
+				GetBaseAttributes().GetStartRotation(),
+				GetBaseAttributes().GetStartSize(),
+				GetBaseAttributes().GetStartVelocity(),
+				GetBaseAttributes().GetStartAcceleration()
 			);
 
-			particle->GetSprite().SetColor(GetBaseAttributes().startColor);
-			particle->SetFullLife(GetBaseAttributes().startLifespan);
+			particle->GetSprite().SetColor(GetBaseAttributes().GetStartColor());
+			particle->SetFullLife(GetBaseAttributes().GetStartLifespan());
 
 			m_particles.GetList().push_back(particle);
 			particle->Start();
@@ -97,6 +98,7 @@ void ParticleSystem::Update(float deltaTime)
 		}
 	}
 
+	//Update particles
 	std::list<ParticleObject*>::iterator it = m_particles.GetList().begin();
 	while (it != m_particles.GetList().end())
 	{

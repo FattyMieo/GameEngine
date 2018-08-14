@@ -108,7 +108,10 @@
     <ClCompile Include="ParticleAffectorGroup.cpp">
       <Filter>Source Files\Engine\ParticleSystem\Affectors</Filter>
     </ClCompile>
-    <ClCompile Include="RandomColorAffector.cpp">
+    <ClCompile Include="ParticleAttributeBase.cpp">
+      <Filter>Source Files\Engine\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="TransparencyAffectorOverLifespan.cpp">
       <Filter>Source Files\Engine\ParticleSystem\Affectors</Filter>
     </ClCompile>
   </ItemGroup>
@@ -179,19 +182,28 @@
     <ClInclude Include="MyApplication.h">
       <Filter>Header Files\Project</Filter>
     </ClInclude>
-    <ClInclude Include="ExtendList.h">
-      <Filter>Header Files\Engine\Extensions</Filter>
-    </ClInclude>
     <ClInclude Include="Container.h">
       <Filter>Header Files\Engine\Extensions</Filter>
     </ClInclude>
     <ClInclude Include="ParticleAffectorGroup.h">
       <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
     </ClInclude>
-    <ClInclude Include="RandomColorAffector.h">
+    <ClInclude Include="MathExtension.h">
+      <Filter>Header Files\Engine\Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleAttributeRandom.h">
+      <Filter>Header Files\Engine\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleAttributeRandomItem.h">
+      <Filter>Header Files\Engine\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleAffectorOverLifespan.h">
       <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
     </ClInclude>
-    <ClInclude Include="MathExtension.h">
+    <ClInclude Include="TransparencyAffectorOverLifespan.h">
+      <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClInclude>
+    <ClInclude Include="ListExtension.h">
       <Filter>Header Files\Engine\Extensions</Filter>
     </ClInclude>
   </ItemGroup>

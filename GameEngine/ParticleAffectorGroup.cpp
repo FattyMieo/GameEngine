@@ -5,8 +5,8 @@ ParticleAffectorGroup::ParticleAffectorGroup()
 	gravity = new GravityAffector();
 	wrappedVector.push_back(gravity);
 
-	randColor = new RandomColorAffector();
-	wrappedVector.push_back(randColor);
+	transparencyOverLifespan = new TransparencyAffectorOverLifespan();
+	wrappedVector.push_back(transparencyOverLifespan);
 }
 
 ParticleAffectorGroup::~ParticleAffectorGroup()
