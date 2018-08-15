@@ -31,9 +31,10 @@ Application* app = new MyApplication();
 
 float timer = 0.0f;
 
-void gameUpdate(float deltaTime)
+void gameUpdate(float deltaTime, GLFWwindow* window)
 {
 	app->Update(deltaTime);
+	app->OnKeyDown(window);
 
 	timer -= deltaTime;
 
@@ -92,7 +93,7 @@ int main(void)
 		lastUpdateTime = (float)glfwGetTime();
 		float fps = 1.0f / deltaTime;
 
-		gameUpdate(deltaTime);
+		gameUpdate(deltaTime, window);
 		app->Draw();
 
 		// Swap front and back buffers

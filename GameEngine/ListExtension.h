@@ -5,7 +5,7 @@
 namespace ListExtension
 {
 	template<class T>
-	T& Get(std::list<T*> mList, std::size_t index)
+	static T& Get(std::list<T*> mList, std::size_t index)
 	{
 		std::list<T*>::iterator it = mList.begin();
 		std::size_t count = 0;

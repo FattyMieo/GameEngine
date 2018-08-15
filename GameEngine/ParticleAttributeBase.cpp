@@ -12,6 +12,7 @@ ParticleAttributeBase::ParticleAttributeBase()
 	startSize = Vector2(1.0f, 1.0f);
 	startRotation = 0.0f;
 	startColor = Color(255, 255, 255, 255);
+	blendMode = BM_Additive;
 	maxParticles = 1000;
 }
 

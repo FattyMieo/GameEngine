@@ -11,7 +11,7 @@ RotationAffectorOverLifespan::~RotationAffectorOverLifespan()
 
 }
 
-void RotationAffectorOverLifespan::UpdateParticle(ParticleObject* particle)
+void RotationAffectorOverLifespan::UpdateParticle(ParticleObject* particle, float deltaTime)
 {
 	float a, b;
 	float t;

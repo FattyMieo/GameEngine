@@ -7,7 +7,15 @@ ParticleSystem::ParticleSystem() : GameObject()
 
 ParticleSystem::~ParticleSystem()
 {
+	std::list<ParticleObject*>::iterator it = m_particles.GetList().begin();
+	while (it != m_particles.GetList().end())
+	{
+		ParticleObject* particle = *it;
 
+		it = m_particles.GetList().erase(it);
+		--particleCount;
+		delete particle;
+	}
 }
 
 Container<ParticleObject> ParticleSystem::GetParticles()
@@ -89,6 +97,7 @@ void ParticleSystem::Update(float deltaTime)
 			);
 
 			particle->GetSprite().SetColor(GetBaseAttributes().GetStartColor());
+			particle->GetSprite().SetBlendingMode(GetBaseAttributes().blendMode);
 			particle->SetFullLife(GetBaseAttributes().GetStartLifespan());
 
 			m_particles.GetList().push_back(particle);
@@ -118,7 +127,7 @@ void ParticleSystem::Update(float deltaTime)
 			ParticleAffectorBase* affector = *a_it;
 			if (affector->IsActive())
 			{
-				affector->UpdateParticle(particle);
+				affector->UpdateParticle(particle, deltaTime);
 			}
 
 			++a_it;
@@ -138,5 +147,24 @@ void ParticleSystem::Draw()
 		ParticleObject* p = *it;
 		p->Draw();
 		++it;
+	}
+}
+
+void ParticleSystem::SetActive(bool active)
+{
+	GameObject::SetActive(active);
+
+	//Remove all particles when set inactive
+	if (active == false)
+	{
+		std::list<ParticleObject*>::iterator it = m_particles.GetList().begin();
+		while (it != m_particles.GetList().end())
+		{
+			ParticleObject* particle = *it;
+
+			it = m_particles.GetList().erase(it);
+			--particleCount;
+			delete particle;
+		}
 	}
 }

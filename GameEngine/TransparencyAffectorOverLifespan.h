@@ -7,5 +7,5 @@ public:
 	TransparencyAffectorOverLifespan();
 	virtual ~TransparencyAffectorOverLifespan();
 
-	virtual void UpdateParticle(ParticleObject* particle);
+	virtual void UpdateParticle(ParticleObject* particle, float deltaTime);
 };

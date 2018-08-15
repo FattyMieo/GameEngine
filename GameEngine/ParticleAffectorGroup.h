@@ -8,6 +8,7 @@
 #include "SizeAffectorOverLifespan.h"
 #include "RotationAffectorOverLifespan.h"
 #include "LimitVelocityAffectorOverLifespan.h"
+#include "AnimationAffector.h"
 
 class ParticleAffectorGroup
 {
@@ -16,6 +17,7 @@ private:
 
 public:
 	GravityAffector* gravity;
+	AnimationAffector* animation;
 	TransparencyAffectorOverLifespan* transparencyOverLifespan;
 	ColorAffectorOverLifespan* colorOverLifespan;
 	SizeAffectorOverLifespan* sizeOverLifespan;

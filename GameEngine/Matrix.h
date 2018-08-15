@@ -269,6 +269,61 @@ public:
 		return makeOrientMatrix(x, y, z);
 	}
 
+	//! Create horizontal flip matrix.
+	static Matrix makeHorizontalFlipMatrix()
+	{
+		Matrix matrix;
+
+		matrix.mVal[0][0] = -1.0f;
+		matrix.mVal[0][1] = 0.0f;
+		matrix.mVal[0][2] = 0.0f;
+		matrix.mVal[0][3] = 0.0f;
+
+		matrix.mVal[1][0] = 0.0f;
+		matrix.mVal[1][1] = 1.0f;
+		matrix.mVal[1][2] = 0.0f;
+		matrix.mVal[1][3] = 0.0f;
+
+		matrix.mVal[2][0] = 0.0f;
+		matrix.mVal[2][1] = 0.0f;
+		matrix.mVal[2][2] = 1.0f;
+		matrix.mVal[2][3] = 0.0f;
+
+		matrix.mVal[3][0] = 0.0f;
+		matrix.mVal[3][1] = 0.0f;
+		matrix.mVal[3][2] = 0.0f;
+		matrix.mVal[3][3] = 1.0f;
+
+		return matrix;
+	}
+
+	//! Create vertical flip matrix.
+	static Matrix makeVerticalFlipMatrix()
+	{
+		Matrix matrix;
+
+		matrix.mVal[0][0] = 1.0f;
+		matrix.mVal[0][1] = 0.0f;
+		matrix.mVal[0][2] = 0.0f;
+		matrix.mVal[0][3] = 0.0f;
+
+		matrix.mVal[1][0] = 0.0f;
+		matrix.mVal[1][1] = -1.0f;
+		matrix.mVal[1][2] = 0.0f;
+		matrix.mVal[1][3] = 0.0f;
+
+		matrix.mVal[2][0] = 0.0f;
+		matrix.mVal[2][1] = 0.0f;
+		matrix.mVal[2][2] = 1.0f;
+		matrix.mVal[2][3] = 0.0f;
+
+		matrix.mVal[3][0] = 0.0f;
+		matrix.mVal[3][1] = 0.0f;
+		matrix.mVal[3][2] = 0.0f;
+		matrix.mVal[3][3] = 1.0f;
+
+		return matrix;
+	}
 };
 
 #endif

@@ -7,5 +7,5 @@ public:
 	RotationAffectorOverLifespan();
 	virtual ~RotationAffectorOverLifespan();
 
-	virtual void UpdateParticle(ParticleObject* particle);
+	virtual void UpdateParticle(ParticleObject* particle, float deltaTime);
 };

@@ -46,6 +46,10 @@ void ParticleObject::Initialize(Vector2 pos, float rot, Vector2 size, Vector2 ve
 
 	m_velocity = vel;
 	m_acceleration = accel;
+
+	//AnimationAffector
+	m_animTime = 0.0f;
+	m_animCount = 0;
 }
 
 float ParticleObject::GetLife()
@@ -61,6 +65,26 @@ float ParticleObject::GetFullLife()
 void ParticleObject::SetFullLife(float fullLife)
 {
 	m_fullLife = fullLife;
+}
+
+float ParticleObject::GetAnimTime()
+{
+	return m_animTime;
+}
+
+void ParticleObject::SetAnimTime(float animTime)
+{
+	m_animTime = animTime;
+}
+
+int ParticleObject::GetAnimCount()
+{
+	return m_animCount;
+}
+
+void ParticleObject::SetAnimCount(int animCount)
+{
+	m_animCount = animCount;
 }
 
 Vector2 ParticleObject::GetVelocity()

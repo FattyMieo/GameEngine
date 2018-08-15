@@ -1,23 +1,24 @@
 #include "Sprite.h"
-#include "Drawer.h"
 
 Sprite::Sprite()
 {
-	SetBlendingMode(BM_Alpha);
-
 	m_width = 128;
 	m_height = 128;
 
+	SetBlendingMode(BM_Alpha);
 	SetRenderOrder(0);
+	SetUV(Vector2(0.0f), Vector2(1.0f));
+	hFlip = false;
 }
 
 Sprite::Sprite(const std::string& file)
 {
-	SetBlendingMode(BM_Alpha);
-
 	LoadFromFile(file);
 
+	SetBlendingMode(BM_Alpha);
 	SetRenderOrder(0);
+	SetUV(Vector2(0.0f), Vector2(1.0f));
+	hFlip = false;
 }
 
 Sprite::~Sprite()
@@ -34,6 +35,23 @@ void Sprite::LoadFromFile(const std::string& file)
 void Sprite::SetTextureID(const GLuint textureID)
 {
 	this->m_textureID[0] = textureID;
+}
+
+void Sprite::SetUV(const Vector2 min, const Vector2 max)
+{
+	this->m_minUV = min;
+	this->m_maxUV = max;
+}
+
+Vector2 Sprite::GetDimension()
+{
+	return Vector2(m_width, m_height);
+}
+
+void Sprite::SetDimension(const int x, const int y)
+{
+	m_width = x;
+	m_height = y;
 }
 
 void Sprite::SetColor(const Color& color)
@@ -71,8 +89,10 @@ void Sprite::Draw()
 	Matrix transMatrix = Matrix::makeTranslationMatrix(Vector(m_transform.position.x, m_transform.position.y, 0.0f));
 	Matrix rotMatrix = Matrix::makeRotateMatrix(m_transform.rotation, Vector(0.0f, 0.0f, 1.0f));
 	Matrix scaleMatrix = Matrix::makeScaleMatrix(Vector(m_transform.scale.x, m_transform.scale.y, 0.0f));
+	Matrix hFlipMatrix = Matrix::makeHorizontalFlipMatrix();
 
 	Matrix viewMatrix = transMatrix * rotMatrix * scaleMatrix;
+	if (hFlip) viewMatrix = viewMatrix * hFlipMatrix;
 
 	glLoadMatrixf((GLfloat*)viewMatrix.mVal);
 	
@@ -99,7 +119,7 @@ void Sprite::Draw()
 			break;
 	}
 
-	Drawer::DrawSquare(m_textureID[0], 0, 0, m_width, m_height, m_renderOrder, GetColor().r, GetColor().g, GetColor().b, GetColor().a);
+	Drawer::DrawSquare(m_textureID[0], 0, 0, m_width, m_height, m_renderOrder, GetColor().r, GetColor().g, GetColor().b, GetColor().a, m_minUV, m_maxUV);
 
 	glDepthMask(true); //Reenable the depth mask
 

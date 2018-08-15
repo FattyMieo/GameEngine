@@ -126,6 +126,12 @@
     <ClCompile Include="SizeAffectorOverLifespan.cpp">
       <Filter>Source Files\Engine\ParticleSystem\Affectors</Filter>
     </ClCompile>
+    <ClCompile Include="Spritesheet.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationAffector.cpp">
+      <Filter>Source Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IDestroyable.h">
@@ -228,6 +234,15 @@
       <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
     </ClInclude>
     <ClInclude Include="SizeAffectorOverLifespan.h">
+      <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
+    </ClInclude>
+    <ClInclude Include="Spritesheet.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GLExtension.h">
+      <Filter>Header Files\Engine\Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationAffector.h">
       <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
     </ClInclude>
   </ItemGroup>

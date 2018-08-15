@@ -39,7 +39,7 @@ void Drawer::DrawGeometry(GLuint textureID, GLfloat* vertices, GLfloat* texCoord
 	glDisableClientState(GL_COLOR_ARRAY);
 }
 
-void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height, int depth, GLubyte r, GLubyte g, GLubyte b, GLubyte a)
+void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height, int depth, GLubyte r, GLubyte g, GLubyte b, GLubyte a, Vector2 minUV, Vector2 maxUV)
 {
 	float halfWidth = (float)width / 2.0f;
 	float halfHeight = (float)height / 2.0f;
@@ -57,16 +57,7 @@ void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height, i
 		x + halfWidth, y + halfHeight, depth_f
 	};
 
-	GLfloat texCoords[] =
-	{
-		0.0f, 0.0f,
-		0.0f, 1.0f,
-		1.0f, 0.0f,
-
-		0.0f, 1.0f,
-		1.0f, 0.0f,
-		1.0f, 1.0f
-	};
+	GLfloat* texCoords = GLExtension::GetUV(minUV, maxUV);
 
 	GLubyte colors[] =
 	{
@@ -80,6 +71,11 @@ void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height, i
 	};
 
 	DrawGeometry(textureID, vertices, texCoords, colors);
+}
+
+void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height, int depth, GLubyte r, GLubyte g, GLubyte b, GLubyte a)
+{
+	DrawSquare(textureID, x, y, width, height, depth, r, g, b, a, Vector2(0.0), Vector2(1.0));
 }
 
 void Drawer::DrawSquare(GLuint textureID, int x, int y, int width, int height, int depth)

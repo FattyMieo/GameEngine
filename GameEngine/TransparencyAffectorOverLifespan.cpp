@@ -11,7 +11,7 @@ TransparencyAffectorOverLifespan::~TransparencyAffectorOverLifespan()
 
 }
 
-void TransparencyAffectorOverLifespan::UpdateParticle(ParticleObject* particle)
+void TransparencyAffectorOverLifespan::UpdateParticle(ParticleObject* particle, float deltaTime)
 {
 	unsigned int a, b;
 	float t;

@@ -11,7 +11,7 @@ LimitVelocityAffectorOverLifespan::~LimitVelocityAffectorOverLifespan()
 
 }
 
-void LimitVelocityAffectorOverLifespan::UpdateParticle(ParticleObject* particle)
+void LimitVelocityAffectorOverLifespan::UpdateParticle(ParticleObject* particle, float deltaTime)
 {
 	Vector2 a, b;
 	float t;

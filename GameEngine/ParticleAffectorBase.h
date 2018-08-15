@@ -13,5 +13,5 @@ public:
 	bool IsActive();
 	void SetActive(bool active);
 
-	virtual void UpdateParticle(ParticleObject* particle) = 0;
+	virtual void UpdateParticle(ParticleObject* particle, float deltaTime) = 0;
 };

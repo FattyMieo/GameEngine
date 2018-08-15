@@ -4,6 +4,7 @@
 GameObject::GameObject()
 {
 	name = "GameObject";
+	SetActive(true);
 }
 
 GameObject::GameObject(Sprite sprite) : GameObject()
@@ -14,6 +15,16 @@ GameObject::GameObject(Sprite sprite) : GameObject()
 GameObject::~GameObject()
 {
 
+}
+
+void GameObject::SetActive(bool active)
+{
+	m_active = active;
+}
+
+bool GameObject::IsActive()
+{
+	return m_active;
 }
 
 void GameObject::SetTransform(Transform2D& transform)

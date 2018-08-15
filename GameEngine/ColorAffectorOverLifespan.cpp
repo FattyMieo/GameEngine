@@ -11,7 +11,7 @@ ColorAffectorOverLifespan::~ColorAffectorOverLifespan()
 
 }
 
-void ColorAffectorOverLifespan::UpdateParticle(ParticleObject* particle)
+void ColorAffectorOverLifespan::UpdateParticle(ParticleObject* particle, float deltaTime)
 {
 	Color a, b;
 	float t;

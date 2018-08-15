@@ -8,5 +8,5 @@ public:
 	SizeAffectorOverLifespan();
 	virtual ~SizeAffectorOverLifespan();
 
-	virtual void UpdateParticle(ParticleObject* particle);
+	virtual void UpdateParticle(ParticleObject* particle, float deltaTime);
 };

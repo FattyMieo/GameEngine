@@ -10,6 +10,8 @@
 class GameObject : public IRunnable, public IDrawable
 {
 private:
+	bool m_active;
+
 	//Container<Component> m_Components;
 
 	Transform2D m_transform;
@@ -21,6 +23,9 @@ public:
 	GameObject();
 	GameObject(Sprite sprite);
 	virtual ~GameObject();
+
+	virtual void SetActive(bool active);
+	bool IsActive();
 
 	void SetTransform(Transform2D& transform);
 	Transform2D& GetTransform();

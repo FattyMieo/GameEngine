@@ -10,6 +10,8 @@ private:
 	Vector2 m_acceleration;
 	float m_life;
 	float m_fullLife;
+	float m_animTime; //AnimationAffector
+	int m_animCount; //AnimationAffector
 
 public:
 	ParticleObject();
@@ -23,6 +25,10 @@ public:
 	float GetLife(); //Get remaining life
 	float GetFullLife();
 	void SetFullLife(float fullLife);
+	float GetAnimTime(); //AnimationAffector
+	void SetAnimTime(float animTime); //AnimationAffector
+	int GetAnimCount(); //AnimationAffector
+	void SetAnimCount(int animCount); //AnimationAffector
 	Vector2 GetVelocity();
 	void SetVelocity(Vector2 vel);
 	Vector2 GetAcceleration();

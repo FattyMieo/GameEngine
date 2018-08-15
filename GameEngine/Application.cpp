@@ -25,9 +25,15 @@ void Application::Update(float deltaTime)
 	while (it != m_GameObjects.GetList().end())
 	{
 		GameObject* go = *it;
-		go->Update(deltaTime);
+		if (go->IsActive())
+			go->Update(deltaTime);
 		++it;
 	}
+}
+
+void Application::OnKeyDown(GLFWwindow* window)
+{
+	//std::cout << "Application Key Down" << std::endl;
 }
 
 void Application::Draw()
@@ -40,7 +46,8 @@ void Application::Draw()
 	while (it != m_GameObjects.GetList().end())
 	{
 		GameObject* go = *it;
-		go->Draw();
+		if(go->IsActive())
+			go->Draw();
 		++it;
 	}
 }

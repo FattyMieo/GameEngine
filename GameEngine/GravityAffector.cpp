@@ -10,7 +10,7 @@ GravityAffector::~GravityAffector()
 
 }
 
-void GravityAffector::UpdateParticle(ParticleObject* particle)
+void GravityAffector::UpdateParticle(ParticleObject* particle, float deltaTime)
 {
 	Vector2 curVel = particle->GetVelocity();
 

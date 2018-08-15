@@ -1,7 +1,7 @@
 #pragma once
 #include "Vector2.h"
 #include "Color.h"
-#include "MathExtension.h"
+#include "BlendMode.h"
 #include "ParticleAttributeRandom.h"
 
 struct ParticleAttributeBase
@@ -17,6 +17,7 @@ struct ParticleAttributeBase
 	Vector2 startSize;
 	float startRotation;
 	Color startColor;
+	BlendMode blendMode;
 
 	ParticleAttributeRandom random;
 

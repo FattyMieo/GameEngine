@@ -19,6 +19,7 @@ public:
 
 	virtual void Start();
 	virtual void Update(float deltaTime);
+	virtual void OnKeyDown(GLFWwindow* window);
 	void Draw();
 
 	GameObject* Instantiate();

@@ -19,6 +19,11 @@ ParticleAffectorGroup::ParticleAffectorGroup()
 
 	limitVelocityOverLifespan = new LimitVelocityAffectorOverLifespan();
 	wrappedVector.push_back(limitVelocityOverLifespan);
+
+
+	//Place this at the last for it to update lastly
+	animation = new AnimationAffector();
+	wrappedVector.push_back(animation);
 }
 
 ParticleAffectorGroup::~ParticleAffectorGroup()

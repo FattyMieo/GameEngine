@@ -33,4 +33,6 @@ public:
 	virtual void Start();
 	virtual void Update(float deltaTime);
 	virtual void Draw();
+
+	void SetActive(bool active) override;
 };

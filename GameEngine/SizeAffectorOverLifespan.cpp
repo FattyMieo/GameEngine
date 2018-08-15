@@ -11,7 +11,7 @@ SizeAffectorOverLifespan::~SizeAffectorOverLifespan()
 
 }
 
-void SizeAffectorOverLifespan::UpdateParticle(ParticleObject* particle)
+void SizeAffectorOverLifespan::UpdateParticle(ParticleObject* particle, float deltaTime)
 {
 	Vector2 a, b;
 	float t;

@@ -6,9 +6,11 @@
 #include <cmath>
 #include <GLFW/glfw3.h>
 #include "IDrawable.h"
+#include "Drawer.h"
 #include "Component.h"
 #include "Transform2D.h"
 #include "Color.h"
+#include "Vector2.h"
 #include "BlendMode.h"
 
 class Sprite : public Component, public IDrawable
@@ -21,8 +23,11 @@ private:
 	Color m_color;
 	BlendMode m_blendMode;
 	int m_renderOrder;
+	Vector2 m_minUV;
+	Vector2 m_maxUV;
 
 public:
+	bool hFlip;
 
 	Sprite();
 	Sprite(const std::string& file);
@@ -30,6 +35,9 @@ public:
 
 	void LoadFromFile(const std::string& file);
 	void SetTextureID(const GLuint textureID);
+	void SetUV(const Vector2 min, const Vector2 max);
+	Vector2 GetDimension();
+	void Sprite::SetDimension(const int x, const int y);
 	void SetColor(const Color& color);
 	const Color& GetColor();
 	void SetBlendingMode(BlendMode blend);
