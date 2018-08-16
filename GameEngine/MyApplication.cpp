@@ -15,12 +15,20 @@ void MyApplication::Start()
 {
 	Application::Start();
 
+	FMOD_RESULT result;
+	//Load and Set up Music
+	result = m_fmodSystem->createStream("../Media/Reaper_Ultimate.mp3", FMOD_SOFTWARE, 0, &m_sound[0]);
+	FMOD_ErrorCheck(result);
+	result = m_fmodSystem->createStream("../Media/Reaper_UltimateCharging.mp3", FMOD_SOFTWARE, 0, &m_sound[1]);
+	FMOD_ErrorCheck(result);
+	result = m_fmodSystem->createStream("../Media/Reaper_UltimateReady.mp3", FMOD_SOFTWARE, 0, &m_sound[2]);
+	FMOD_ErrorCheck(result);
+
 	smokePosition = Vector2(320.0f, 240.0f);
-	animDuration = 4.0f;
+	animDuration = 3.5f;
+	predelayAnimDuration = 0.5f;
 
 	Sprite* sp;
-
-
 	
 	reaper = Instantiate(Vector2(320.0f, 240.0f), 0.0f);
 	sp = &(reaper->GetSprite());
@@ -278,49 +286,74 @@ void MyApplication::Update(float deltaTime)
 	if (setStart)
 	{
 		ultCharge = 0.0f;
+		ultReady = false;
 		fire->GetEmitterAttributes().emissionRate = 0.0f;
 
 		startAnimTime = time;
 		isAnimating = true;
 		animTimer = 0.0f;
+		predelayAnimTimer = 0.0f;
+		predelayDone = false;
 		flipTimer = 0.2f;
 		isFlipped = !isFlipped;
+
+		//Ultimate Play
+		FMOD_RESULT result = m_fmodSystem->playSound(FMOD_CHANNEL_FREE, m_sound[0], false, &m_soundChannel);
+		FMOD_ErrorCheck(result);
+
 		setStart = false;
 	}
 
 	if (isAnimating)
 	{
-		smoke->GetEmitterAttributes().emissionRate = 100.0f;
-		smokeBase->GetEmitterAttributes().emissionRate = 50.0f;
-		evilEyes->GetEmitterAttributes().emissionRate = 10.0f;
-		bulletSpark->GetEmitterAttributes().emissionRate = 50.0f;
-
 		animTimer += deltaTime;
+		predelayAnimTimer += deltaTime;
 		flipTimer += deltaTime;
 
-		//Flip Timer
-		if (flipTimer >= 0.1f)
+		if (!predelayDone)
 		{
-			isFlipped = !isFlipped;
-			flipTimer -= 0.1f;
+			smoke->GetEmitterAttributes().emissionRate = 0.0f;
+			smokeBase->GetEmitterAttributes().emissionRate = 0.0f;
+			evilEyes->GetEmitterAttributes().emissionRate = 0.0f;
+			bulletSpark->GetEmitterAttributes().emissionRate = 0.0f;
 
-			reaper->GetSprite().hFlip = isFlipped;
-			reaperLH->GetSprite().hFlip = isFlipped;
-			reaperRH->GetSprite().hFlip = isFlipped;
+			if (predelayAnimTimer >= predelayAnimDuration)
+			{
+				predelayDone = true;
+			}
 		}
 
-		//Animating Arms
-		if (!isFlipped)
+		if (predelayDone)
 		{
-			reaperLH->GetTransform().rotation = 70.0f * abs(sin(2.0f * (time - startAnimTime)));
-			reaperRH->GetTransform().rotation = -70.0f * (abs(sin(2.0f * (time - startAnimTime))) - 0.4f);
-			bulletSpark->GetBaseAttributes().startVelocity = Vector2(3.5f, 0.0f);
-		}
-		else
-		{
-			reaperRH->GetTransform().rotation = 70.0f * (abs(sin(2.0f * (time - startAnimTime))) - 0.4f);
-			reaperLH->GetTransform().rotation = -70.0f * abs(sin(2.0f * (time - startAnimTime)));
-			bulletSpark->GetBaseAttributes().startVelocity = Vector2(-3.5f, 0.0f);
+			smoke->GetEmitterAttributes().emissionRate = 100.0f;
+			smokeBase->GetEmitterAttributes().emissionRate = 50.0f;
+			evilEyes->GetEmitterAttributes().emissionRate = 10.0f;
+			bulletSpark->GetEmitterAttributes().emissionRate = 50.0f;
+
+			//Flip Timer
+			if (flipTimer >= 0.1f)
+			{
+				isFlipped = !isFlipped;
+				flipTimer -= 0.1f;
+
+				reaper->GetSprite().hFlip = isFlipped;
+				reaperLH->GetSprite().hFlip = isFlipped;
+				reaperRH->GetSprite().hFlip = isFlipped;
+			}
+
+			//Animating Arms
+			if (!isFlipped)
+			{
+				reaperLH->GetTransform().rotation = 70.0f * abs(sin(2.0f * (time - startAnimTime)));
+				reaperRH->GetTransform().rotation = -70.0f * (abs(sin(2.0f * (time - startAnimTime))) - 0.4f);
+				bulletSpark->GetBaseAttributes().startVelocity = Vector2(3.5f, 0.0f);
+			}
+			else
+			{
+				reaperRH->GetTransform().rotation = 70.0f * (abs(sin(2.0f * (time - startAnimTime))) - 0.4f);
+				reaperLH->GetTransform().rotation = -70.0f * abs(sin(2.0f * (time - startAnimTime)));
+				bulletSpark->GetBaseAttributes().startVelocity = Vector2(-3.5f, 0.0f);
+			}
 		}
 
 		//Animating Portait
@@ -330,6 +363,7 @@ void MyApplication::Update(float deltaTime)
 		if (animTimer >= animDuration)
 		{
 			isFlipped = false;
+			predelayDone = false;
 
 			reaper->GetSprite().hFlip = isFlipped;
 			reaperLH->GetSprite().hFlip = isFlipped;
@@ -357,6 +391,15 @@ void MyApplication::Update(float deltaTime)
 		}
 		else
 		{
+			if (!ultReady)
+			{
+				//Ultimate Ready Play
+				FMOD_RESULT result = m_fmodSystem->playSound(FMOD_CHANNEL_FREE, m_sound[2], false, &m_soundChannel);
+				FMOD_ErrorCheck(result);
+
+				ultReady = true;
+			}
+
 			ultCharge = 100.0f;
 			fire->GetEmitterAttributes().emissionRate = 10.0f;
 		}
@@ -390,6 +433,8 @@ void MyApplication::OnKeyDown(GLFWwindow* window)
 			else
 			{
 				//Ultimate Charging Play
+				FMOD_RESULT result = m_fmodSystem->playSound(FMOD_CHANNEL_FREE, m_sound[1], false, &m_soundChannel);
+				FMOD_ErrorCheck(result);
 			}
 		}
 	}

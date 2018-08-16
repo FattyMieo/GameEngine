@@ -11,6 +11,11 @@ Application::~Application()
 
 }
 
+void Application::InitFMOD(FMOD::System* fmodSystem)
+{
+	m_fmodSystem = fmodSystem;
+}
+
 void Application::Start()
 {
 	//std::cout << "Application Started" << std::endl;

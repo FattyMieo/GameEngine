@@ -16,8 +16,12 @@ public:
 	bool isAnimating;
 	float animTimer;
 	float animDuration;
+	float predelayAnimTimer;
+	float predelayAnimDuration;
+	bool predelayDone;
 
 	float ultCharge;
+	bool ultReady;
 
 	GameObject* portrait;
 	GameObject* ultimate;
@@ -32,6 +36,9 @@ public:
 	ParticleSystem* evilEyes;
 
 	Vector2 smokePosition;
+
+	FMOD::Sound* m_sound[3];
+	FMOD::Channel* m_soundChannel;
 
 	MyApplication();
 	virtual ~MyApplication();

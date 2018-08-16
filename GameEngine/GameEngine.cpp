@@ -3,6 +3,9 @@
 #include <GLFW/glfw3.h>
 #include <Windows.h>
 #include <GL/GLU.h>
+#include <fmod.hpp>
+#include <fmod_errors.h>
+#include "FMODExtension.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -13,6 +16,29 @@ using namespace std;
 
 const int RESOLUTION_X = 640;
 const int RESOLUTION_Y = 480;
+
+FMOD::System* m_fmodSystem;
+
+void initFMOD()
+{
+	FMOD_RESULT result;
+	unsigned int version;
+
+	result = FMOD::System_Create(&m_fmodSystem);
+	FMOD_ErrorCheck(result);
+
+	result = m_fmodSystem->getVersion(&version);
+	FMOD_ErrorCheck(result);
+
+	if (version < FMOD_VERSION)
+	{
+		printf("FMOD Error! You are using an old version of FMOD.", version, FMOD_VERSION);
+	}
+
+	//Initialise fmod system
+	result = m_fmodSystem->init(32, FMOD_INIT_NORMAL, 0);
+	FMOD_ErrorCheck(result);
+}
 
 void onWindowResized(GLFWwindow* window, int width, int height)
 {
@@ -78,6 +104,10 @@ int main(void)
 
 	// Set Ortho 2D View
 	onWindowResized(window, RESOLUTION_X, RESOLUTION_Y);
+
+	//Setup FMOD
+	initFMOD();
+	app->InitFMOD(m_fmodSystem);
 
 	// Run Application Start
 	app->Start();

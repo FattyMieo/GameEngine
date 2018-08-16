@@ -245,5 +245,8 @@
     <ClInclude Include="AnimationAffector.h">
       <Filter>Header Files\Engine\ParticleSystem\Affectors</Filter>
     </ClInclude>
+    <ClInclude Include="FMODExtension.h">
+      <Filter>Header Files\Engine\Extensions</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
