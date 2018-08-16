@@ -27,11 +27,13 @@ void MyApplication::Start()
 	FMOD_ErrorCheck(result);
 
 	//BGM Play
+	result = m_music->setLoopCount(-1);
+	FMOD_ErrorCheck(result);
+	result = m_musicChannel->setLoopCount(-1);
+	FMOD_ErrorCheck(result);
 	result = m_fmodSystem->playSound(FMOD_CHANNEL_FREE, m_music, false, &m_musicChannel);
 	FMOD_ErrorCheck(result);
 	result = m_musicChannel->setVolume(0.25f);
-	FMOD_ErrorCheck(result);
-	result = m_musicChannel->setLoopCount(-1);
 	FMOD_ErrorCheck(result);
 
 	smokePosition = Vector2(320.0f, 240.0f);
