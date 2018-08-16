@@ -17,11 +17,21 @@ void MyApplication::Start()
 
 	FMOD_RESULT result;
 	//Load and Set up Music
-	result = m_fmodSystem->createStream("../Media/Reaper_Ultimate.mp3", FMOD_SOFTWARE, 0, &m_sound[0]);
+	result = m_fmodSystem->createStream("../Media/Reaper_Ultimate.ogg", FMOD_SOFTWARE, 0, &m_sound[0]);
 	FMOD_ErrorCheck(result);
-	result = m_fmodSystem->createStream("../Media/Reaper_UltimateCharging.mp3", FMOD_SOFTWARE, 0, &m_sound[1]);
+	result = m_fmodSystem->createStream("../Media/Reaper_UltimateCharging.ogg", FMOD_SOFTWARE, 0, &m_sound[1]);
 	FMOD_ErrorCheck(result);
-	result = m_fmodSystem->createStream("../Media/Reaper_UltimateReady.mp3", FMOD_SOFTWARE, 0, &m_sound[2]);
+	result = m_fmodSystem->createStream("../Media/Reaper_UltimateReady.ogg", FMOD_SOFTWARE, 0, &m_sound[2]);
+	FMOD_ErrorCheck(result);
+	result = m_fmodSystem->createStream("../Media/Overwatch_RallyTheHeroes.ogg", FMOD_SOFTWARE, 0, &m_music);
+	FMOD_ErrorCheck(result);
+
+	//BGM Play
+	result = m_fmodSystem->playSound(FMOD_CHANNEL_FREE, m_music, false, &m_musicChannel);
+	FMOD_ErrorCheck(result);
+	result = m_musicChannel->setVolume(0.25f);
+	FMOD_ErrorCheck(result);
+	result = m_musicChannel->setLoopCount(-1);
 	FMOD_ErrorCheck(result);
 
 	smokePosition = Vector2(320.0f, 240.0f);

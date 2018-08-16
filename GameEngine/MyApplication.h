@@ -40,6 +40,9 @@ public:
 	FMOD::Sound* m_sound[3];
 	FMOD::Channel* m_soundChannel;
 
+	FMOD::Sound* m_music;
+	FMOD::Channel* m_musicChannel;
+
 	MyApplication();
 	virtual ~MyApplication();
 
