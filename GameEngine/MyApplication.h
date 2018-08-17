@@ -37,7 +37,7 @@ public:
 
 	Vector2 smokePosition;
 
-	FMOD::Sound* m_sound[3];
+	FMOD::Sound* m_sound[9];
 	FMOD::Channel* m_soundChannel;
 
 	FMOD::Sound* m_music;

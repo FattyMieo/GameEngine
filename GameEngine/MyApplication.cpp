@@ -23,17 +23,42 @@ void MyApplication::Start()
 	FMOD_ErrorCheck(result);
 	result = m_fmodSystem->createStream("../Media/Reaper_UltimateReady.ogg", FMOD_SOFTWARE, 0, &m_sound[2]);
 	FMOD_ErrorCheck(result);
+	result = m_fmodSystem->createStream("../Media/Reaper_UltimateAlmostReady.ogg", FMOD_SOFTWARE, 0, &m_sound[3]);
+	FMOD_ErrorCheck(result);
+	result = m_fmodSystem->createStream("../Media/Reaper_UltimateReady1.ogg", FMOD_SOFTWARE, 0, &m_sound[4]);
+	FMOD_ErrorCheck(result);
+	result = m_fmodSystem->createStream("../Media/Reaper_UltimateCharging1.ogg", FMOD_SOFTWARE, 0, &m_sound[5]);
+	FMOD_ErrorCheck(result);
+	result = m_fmodSystem->createStream("../Media/Reaper_Hello.ogg", FMOD_SOFTWARE, 0, &m_sound[6]);
+	FMOD_ErrorCheck(result);
+	result = m_fmodSystem->createStream("../Media/Reaper_Hello1.ogg", FMOD_SOFTWARE, 0, &m_sound[7]);
+	FMOD_ErrorCheck(result);
+	result = m_fmodSystem->createStream("../Media/Reaper_Hello2.ogg", FMOD_SOFTWARE, 0, &m_sound[8]);
+	FMOD_ErrorCheck(result);
 	result = m_fmodSystem->createStream("../Media/Overwatch_RallyTheHeroes.ogg", FMOD_SOFTWARE, 0, &m_music);
 	FMOD_ErrorCheck(result);
 
 	//BGM Play
-	result = m_music->setLoopCount(-1);
+	result = m_fmodSystem->playSound(FMOD_CHANNEL_REUSE, m_music, false, &m_musicChannel);
 	FMOD_ErrorCheck(result);
-	result = m_musicChannel->setLoopCount(-1);
+	result = m_musicChannel->setMode(FMOD_LOOP_NORMAL);
 	FMOD_ErrorCheck(result);
-	result = m_fmodSystem->playSound(FMOD_CHANNEL_FREE, m_music, false, &m_musicChannel);
+	result = m_musicChannel->setVolume(0.15f);
 	FMOD_ErrorCheck(result);
-	result = m_musicChannel->setVolume(0.25f);
+
+	//Hello Play
+	switch (rand() % 3)
+	{
+	case 0:
+		result = m_fmodSystem->playSound(FMOD_CHANNEL_REUSE, m_sound[6], false, &m_soundChannel);
+		break;
+	case 1:
+		result = m_fmodSystem->playSound(FMOD_CHANNEL_REUSE, m_sound[7], false, &m_soundChannel);
+		break;
+	case 2:
+		result = m_fmodSystem->playSound(FMOD_CHANNEL_REUSE, m_sound[8], false, &m_soundChannel);
+		break;
+	}
 	FMOD_ErrorCheck(result);
 
 	smokePosition = Vector2(320.0f, 240.0f);
@@ -275,26 +300,6 @@ void MyApplication::Update(float deltaTime)
 
 	time += deltaTime;
 
-
-	//Transform2D t;
-	//t = FindGameObject(0).GetTransform();
-	//t.rotation = 100.0f * time;
-	//t.scale.SetEqual(0.25f * (sin(time + 1.0f) + 1.0f));
-
-	//FindGameObject(0).SetTransform(t);
-
-	//t = FindGameObject(1).GetTransform();
-	//t.rotation = -15.0f * time;
-	//t.scale.SetEqual(0.5f * (sin(time + 2.0f) + 0.25f));
-
-	//FindGameObject(1).SetTransform(t);
-
-	//t = cat->GetTransform();
-	//t.rotation = 20.0f * time;
-	//t.scale.SetEqual(0.3f * (sin(time + 3.0f) + 0.5f));
-
-	//cat->SetTransform(t);
-
 	if (setStart)
 	{
 		ultCharge = 0.0f;
@@ -310,7 +315,7 @@ void MyApplication::Update(float deltaTime)
 		isFlipped = !isFlipped;
 
 		//Ultimate Play
-		FMOD_RESULT result = m_fmodSystem->playSound(FMOD_CHANNEL_FREE, m_sound[0], false, &m_soundChannel);
+		FMOD_RESULT result = m_fmodSystem->playSound(FMOD_CHANNEL_REUSE, m_sound[0], false, &m_soundChannel);
 		FMOD_ErrorCheck(result);
 
 		setStart = false;
@@ -366,6 +371,14 @@ void MyApplication::Update(float deltaTime)
 				reaperLH->GetTransform().rotation = -70.0f * abs(sin(2.0f * (time - startAnimTime)));
 				bulletSpark->GetBaseAttributes().startVelocity = Vector2(-3.5f, 0.0f);
 			}
+
+			float radius = 3.0f;
+			float speed = 20.0f;
+
+			//Should open a custom gameobject
+			smoke->GetTransform().position = Vector2(smokePosition.x + 64.0f * radius * sin(time * speed), smokePosition.y + 10.0f * radius * cos(time * speed));
+			smokeBase->GetTransform().position = Vector2(smokePosition.x + 64.0f * radius * sin((time - 0.1f) * speed), smokePosition.y + 10.0f * radius * cos((time - 0.1f) * speed));
+
 		}
 
 		//Animating Portait
@@ -398,7 +411,7 @@ void MyApplication::Update(float deltaTime)
 
 		if (ultCharge < 100.0f)
 		{
-			ultCharge += deltaTime * 25.0f;
+			ultCharge += deltaTime * 15.0f;
 			fire->GetEmitterAttributes().emissionRate = 0.0f;
 		}
 		else
@@ -406,7 +419,19 @@ void MyApplication::Update(float deltaTime)
 			if (!ultReady)
 			{
 				//Ultimate Ready Play
-				FMOD_RESULT result = m_fmodSystem->playSound(FMOD_CHANNEL_FREE, m_sound[2], false, &m_soundChannel);
+				FMOD_RESULT result;
+				switch (rand() % 3)
+				{
+				case 0:
+					result = m_fmodSystem->playSound(FMOD_CHANNEL_REUSE, m_sound[2], false, &m_soundChannel);
+					break;
+				case 1:
+					result = m_fmodSystem->playSound(FMOD_CHANNEL_REUSE, m_sound[4], false, &m_soundChannel);
+					break;
+				case 2:
+					result = m_fmodSystem->playSound(FMOD_CHANNEL_REUSE, m_sound[5], false, &m_soundChannel);
+					break;
+				}
 				FMOD_ErrorCheck(result);
 
 				ultReady = true;
@@ -416,14 +441,6 @@ void MyApplication::Update(float deltaTime)
 			fire->GetEmitterAttributes().emissionRate = 10.0f;
 		}
 	}
-
-	float radius = 3.0f;
-	float speed = 20.0f;
-
-	//Should open a custom gameobject
-	smoke->GetTransform().position = Vector2(smokePosition.x + 64.0f * radius * sin(time * speed), smokePosition.y + 10.0f * radius * cos(time * speed));
-	smokeBase->GetTransform().position = Vector2(smokePosition.x + 64.0f * radius * sin((time - 0.1f) * speed), smokePosition.y + 10.0f * radius * cos((time - 0.1f) * speed));
-
 
 	//Stress Test
 	//GameObject* go = Instantiate();
@@ -445,7 +462,16 @@ void MyApplication::OnKeyDown(GLFWwindow* window)
 			else
 			{
 				//Ultimate Charging Play
-				FMOD_RESULT result = m_fmodSystem->playSound(FMOD_CHANNEL_FREE, m_sound[1], false, &m_soundChannel);
+				FMOD_RESULT result;
+				switch (rand() % 2)
+				{
+				case 0:
+					result = m_fmodSystem->playSound(FMOD_CHANNEL_REUSE, m_sound[1], false, &m_soundChannel);
+					break;
+				case 1:
+					result = m_fmodSystem->playSound(FMOD_CHANNEL_REUSE, m_sound[3], false, &m_soundChannel);
+					break;
+				}
 				FMOD_ErrorCheck(result);
 			}
 		}

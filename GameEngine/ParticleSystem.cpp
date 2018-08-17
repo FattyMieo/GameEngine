@@ -64,6 +64,11 @@ void ParticleSystem::Update(float deltaTime)
 		}
 	}
 
+	if (GetEmitterAttributes().emissionRate <= 0.0f)
+	{
+		canEmit = false;
+	}
+
 	//Generate new particles
 	if (canEmit)
 	{
@@ -153,18 +158,4 @@ void ParticleSystem::Draw()
 void ParticleSystem::SetActive(bool active)
 {
 	GameObject::SetActive(active);
-
-	//Remove all particles when set inactive
-	if (active == false)
-	{
-		std::list<ParticleObject*>::iterator it = m_particles.GetList().begin();
-		while (it != m_particles.GetList().end())
-		{
-			ParticleObject* particle = *it;
-
-			it = m_particles.GetList().erase(it);
-			--particleCount;
-			delete particle;
-		}
-	}
 }
